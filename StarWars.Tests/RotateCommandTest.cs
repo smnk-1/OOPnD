@@ -36,7 +36,7 @@ public class RotateCommandTests
     {
         var rotating = new Mock<IRotating>();
         rotating.SetupGet(m => m.Angle).Returns(() => 45);
-        rotating.SetupGet(m => m.RotateVelocity).Throws(new Exception("Cannot read angle"));
+        rotating.SetupGet(m => m.RotateVelocity).Throws(new Exception("Cannot read rotate velocity"));
         ICommand rotate = new RotateCommand(rotating.Object);
 
         Assert.Throws<Exception>(rotate.Execute);
