@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using Moq;
 using StarWars.Lib;
 
