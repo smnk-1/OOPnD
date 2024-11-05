@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Install Required Tools
+        run: |
+          dotnet new tool-manifest
+          dotnet add StarshipGame.Test/StarshipGame.Test.csproj package Moq
+
+      - name: Build
+        run: |
+          dotnet build StarshipGame/StarshipGame.csproj --configuration Release
+          dotnet build StarshipGame.Test/StarshipGame.Test.csproj --configuration Release
+
+      - name: Run Tests
+        run: dotnet test
+
