@@ -1,5 +1,10 @@
 ﻿namespace StarWars.Lib;
 
+public class Degree
+{
+
+}
+
 public interface IRotating
 {
     int Angle { get; set; }

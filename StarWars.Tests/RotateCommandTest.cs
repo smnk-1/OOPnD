@@ -8,10 +8,8 @@ public class RotateCommandTests
     public void Test45plus90()
     {
         var rotating = new Mock<IRotating>();
-        rotating.SetupGet(r => r.Angle)
-                .Returns(() => 45);
-        rotating.SetupGet(r => r.RotateVelocity)
-                .Returns(() => 90);
+        rotating.SetupGet(r => r.Angle).Returns(() => 45);
+        rotating.SetupGet(r => r.RotateVelocity).Returns(() => 90);
 
         var cmd = new RotateCommand(rotating.Object);
         cmd.Execute();
