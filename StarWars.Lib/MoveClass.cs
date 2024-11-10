@@ -1,4 +1,4 @@
-namespace StarWars.Lib
+﻿namespace StarWars.Lib
 {
     public interface IMoving
     {
@@ -44,7 +44,9 @@ namespace StarWars.Lib
             while (commandQueue.Count > 0)
             {
                 if (cts.Token.IsCancellationRequested)
+                {
                     break;
+                }
 
                 var command = commandQueue.Dequeue();
                 command.Execute();
