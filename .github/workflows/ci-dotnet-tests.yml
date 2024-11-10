@@ -1,16 +1,13 @@
 name: CI - Tests
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
       - develop
-      - ci
-  push:
-    branches:
-      - main
-      - develop
-      - ci
 
 jobs:
   build:
