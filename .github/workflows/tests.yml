@@ -3,10 +3,10 @@ name: CI
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -26,12 +26,12 @@ jobs:
       - name: Install Required Tools
         run: |
           dotnet new tool-manifest
-          dotnet add StarshipGame.Test/StarshipGame.Test.csproj package Moq
+          dotnet add StarWars.Tests/StarWars.Tests.csproj package Moq
 
       - name: Build
         run: |
-          dotnet build StarshipGame/StarshipGame.csproj --configuration Release
-          dotnet build StarshipGame.Test/StarshipGame.Test.csproj --configuration Release
+          dotnet build StarWars.Lib/StarWars.Lib.csproj --configuration Release
+          dotnet build StarWars.Tests/StarWars.Tests.csproj --configuration Release
 
       - name: Run Tests
         run: dotnet test
