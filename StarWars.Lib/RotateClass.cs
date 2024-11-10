@@ -1,4 +1,4 @@
-namespace StarWars.Lib;
+﻿namespace StarWars.Lib;
 
 public class Degree
 {
@@ -15,7 +15,7 @@ public class Degree
         set => _value = Normalize(value);
     }
 
-    private int Normalize(int value)
+    private static int Normalize(int value)
     {
         return (value % 360 + 360) % 360;
     }
@@ -28,13 +28,13 @@ public class Degree
 
 public interface IRotating
 {
-    Degree Angle   { get; set; }
+    Degree Angle { get; set; }
     Degree RotateVelocity { get; }
 }
 
 public class RotateCommand : ICommand
 {
-    private IRotating obj;
+    private readonly IRotating obj;
 
     public RotateCommand(IRotating obj)
     {

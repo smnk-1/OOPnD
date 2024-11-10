@@ -1,4 +1,4 @@
-using Moq;
+﻿using Moq;
 using StarWars.Lib;
 
 namespace StarWars.Test;
@@ -11,7 +11,7 @@ public class RotateCommandTests
         rotating.SetupGet(r => r.Angle).Returns(() => new Degree(45));
         rotating.SetupGet(r => r.RotateVelocity).Returns(() => new Degree(90));
 
-        var cmd = new RotateCommand(rotating.Object); 
+        var cmd = new RotateCommand(rotating.Object);
         cmd.Execute();
 
         rotating.VerifySet(r => r.Angle = It.Is<Degree>(d => d.Value == 135), Times.Once());
@@ -29,7 +29,7 @@ public class RotateCommandTests
     }
 
     [Fact]
-    public void TestCannotReadRotateVelocity() 
+    public void TestCannotReadRotateVelocity()
     {
         var rotating = new Mock<IRotating>();
         rotating.SetupGet(m => m.Angle).Returns(() => new Degree(45));
@@ -40,7 +40,7 @@ public class RotateCommandTests
     }
 
     [Fact]
-    public void TestCannotSetAngle() 
+    public void TestCannotSetAngle()
     {
         var rotating = new Mock<IRotating>();
         rotating.SetupGet(m => m.Angle).Returns(() => new Degree(45));
