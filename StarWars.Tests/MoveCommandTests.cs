@@ -8,7 +8,7 @@ public class MoveCommandTests
 {
     [Fact]
     public void MoveCommandPositionUpdateTest()
-       {
+    {
         var moving = new Mock<IMoving>();
 
         moving.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });
@@ -27,9 +27,9 @@ public class MoveCommandTests
 
         movingObject.SetupGet(m => m.Position).Throws(new InvalidOperationException());
         movingObject.SetupGet(m => m.Velocity).Returns(new int[] { -7, 3 });
-        
+
         var cmd = new MoveCommand(movingObject.Object);
-        
+
         Assert.Throws<InvalidOperationException>(() => cmd.Execute());
     }
 
@@ -40,9 +40,9 @@ public class MoveCommandTests
 
         movingObject.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });
         movingObject.SetupGet(m => m.Velocity).Throws(new InvalidOperationException());
-        
+
         var cmd = new MoveCommand(movingObject.Object);
-        
+
         Assert.Throws<InvalidOperationException>(() => cmd.Execute());
     }
 
@@ -51,7 +51,7 @@ public class MoveCommandTests
     {
         var movingObject = new Mock<IMoving>();
 
-        movingObject.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });;
+        movingObject.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });
         movingObject.SetupGet(m => m.Velocity).Returns(new int[] { -7, 3 });
         movingObject.SetupSet(m => m.Position = It.IsAny<int[]>()).Throws(new InvalidOperationException());
 
