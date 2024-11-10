@@ -1,0 +1,42 @@
+name: CI - Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - ci
+  push:
+    branches:
+      - main
+      - develop
+      - ci
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Install Required Tools
+        run: |
+          dotnet new tool-manifest
+          dotnet add StarWars.Tests/StarWars.Tests.csproj package Moq
+
+      - name: Build
+        run: |
+          dotnet build StarWars.Lib/StarWars.Lib.csproj --configuration Release
+          dotnet build StarWars.Tests/StarWars.Tests.csproj --configuration Release
+
+      - name: Run Tests
+        run: dotnet test
+
