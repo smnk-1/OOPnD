@@ -36,7 +36,7 @@ jobs:
           dotnet build StarWars.Tests/StarWars.Tests.csproj --configuration Release
 
       - name: Test
-        run: dotnet test ./StarWars.Tests/StarWars.Tests.csproj --collect:"XPlat Code Coverage"  ./coverage
+        run: dotnet test ./StarWars.Tests/StarWars.Tests.csproj --collect:"XPlat Code Coverage;Format=opencover;Output=coverage/coverage.xml"
 
       - name: Code Coverage Report
         uses: irongut/CodeCoverageSummary@v1.3.0
