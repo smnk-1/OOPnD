@@ -274,7 +274,3 @@ csharp_space_between_square_brackets = false
 csharp_prefer_braces = true:silent
 csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = true
-<<<<<<< HEAD
-
-=======
->>>>>>> 36c49799aa58ba410c028c69d262988d9da76af5
