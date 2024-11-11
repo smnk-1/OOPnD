@@ -10,13 +10,13 @@ public class MoveCommandTests
     {
         var moving = new Mock<IMoving>();
 
-        moving.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });
-        moving.SetupGet(m => m.Velocity).Returns(new int[] { -7, 3 });
+        moving.SetupGet(m => m.Position).Returns(new CustomVector(12, 5));
+        moving.SetupGet(m => m.Velocity).Returns(new CustomVector(-7, 3));
 
         var cmd = new MoveCommand(moving.Object);
         cmd.Execute();
 
-        moving.VerifySet(m => m.Position = new int[] { 5, 8 });
+        moving.VerifySet(m => m.Position = new CustomVector(5, 8));
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public class MoveCommandTests
         var movingObject = new Mock<IMoving>();
 
         movingObject.SetupGet(m => m.Position).Throws(new InvalidOperationException());
-        movingObject.SetupGet(m => m.Velocity).Returns(new int[] { -7, 3 });
+        movingObject.SetupGet(m => m.Velocity).Returns(new CustomVector(-7, 3));
 
         var cmd = new MoveCommand(movingObject.Object);
 
@@ -37,7 +37,7 @@ public class MoveCommandTests
     {
         var movingObject = new Mock<IMoving>();
 
-        movingObject.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });
+        movingObject.SetupGet(m => m.Position).Returns(new CustomVector(12, 5));
         movingObject.SetupGet(m => m.Velocity).Throws(new InvalidOperationException());
 
         var cmd = new MoveCommand(movingObject.Object);
@@ -50,9 +50,9 @@ public class MoveCommandTests
     {
         var movingObject = new Mock<IMoving>();
 
-        movingObject.SetupGet(m => m.Position).Returns(new int[] { 12, 5 });
-        movingObject.SetupGet(m => m.Velocity).Returns(new int[] { -7, 3 });
-        movingObject.SetupSet(m => m.Position = It.IsAny<int[]>()).Throws(new InvalidOperationException());
+        movingObject.SetupGet(m => m.Position).Returns(new CustomVector(12, 5)); ;
+        movingObject.SetupGet(m => m.Velocity).Returns(new CustomVector(-7, 3));
+        movingObject.SetupSet(m => m.Position = It.IsAny<CustomVector>()).Throws(new InvalidOperationException());
 
         var cmd = new MoveCommand(movingObject.Object);
 
