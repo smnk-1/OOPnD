@@ -9,7 +9,10 @@ public interface IMoving
 public class CustomVector
 {
     private int[] elements;
-
+    public int[] GetElements()
+    {
+        return elements;
+    }
     public CustomVector( params int[] elements)
     {
         this.elements = elements;
@@ -26,13 +29,7 @@ public class CustomVector
 
     public static bool operator ==(CustomVector v1, CustomVector v2)
     {
-        if (ReferenceEquals(v1, null) && ReferenceEquals(v2, null)) return true;
-        if (ReferenceEquals(v1, null) || ReferenceEquals(v2, null)) return false;
-
-        if (v1.elements.Length != v2.elements.Length)
-            return false;
-
-        return v1.elements.SequenceEqual(v2.elements);
+        return ReferenceEquals(v1, v2);
     }
 
     public static bool operator != (CustomVector v1, CustomVector v2)
@@ -42,9 +39,9 @@ public class CustomVector
 
     public override bool Equals(object? obj)
     {
-    if (obj is null){return false;}
-    if (obj is not CustomVector vector){return false;}
-    return this == vector;
+        if (obj is null){return false;}
+        if (obj is not CustomVector vector){return false;}
+        return elements.SequenceEqual(vector.elements);
     }
 
     public override int GetHashCode()
