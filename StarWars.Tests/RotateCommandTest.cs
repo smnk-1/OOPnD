@@ -51,7 +51,7 @@ public class RotateCommandTests
         Assert.Throws<Exception>(rotate.Execute);
     }
 
-    [Fact]  
+    [Fact]
     public void Addition_ShouldNormalizeResult()
     {
         var degree1 = new Degree(350);
