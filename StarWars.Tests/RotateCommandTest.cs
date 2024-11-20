@@ -50,5 +50,24 @@ public class RotateCommandTests
 
         Assert.Throws<Exception>(rotate.Execute);
     }
+
+    [Fact]  
+    public void Addition_ShouldNormalizeResult()
+    {
+        var degree1 = new Degree(350);
+        var degree2 = new Degree(20);
+        var result = degree1 + degree2;
+
+        Assert.Equal(10, result.Value);
+    }
+
+    [Fact]
+    public void NegativeAngle_ShouldNormalizeToPositive()
+    {
+        var degree = new Degree(-45);
+        var result = degree.Value;
+
+        Assert.Equal(315, result);
+    }
 }
 
