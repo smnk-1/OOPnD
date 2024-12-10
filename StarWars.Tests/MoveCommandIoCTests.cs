@@ -1,6 +1,6 @@
-using Moq;
-using Hwdtech;
+﻿using Hwdtech;
 using Hwdtech.Ioc;
+using Moq;
 using StarWars.Lib;
 
 public class MoveCommandIoCTests
@@ -24,7 +24,7 @@ public class MoveCommandIoCTests
 
         new RegisterIoCDependencyMoveCommand().Execute();
 
-        var moveCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Move", mockGameObject.Object); 
+        var moveCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Move", mockGameObject.Object);
         Assert.NotNull(moveCommand);
         Assert.IsType<MoveCommand>(moveCommand);
     }
