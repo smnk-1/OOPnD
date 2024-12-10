@@ -26,7 +26,7 @@ public class Degree
     }
 }
 
-public interface IRotating
+public interface IRotate
 {
     Degree Angle { get; set; }
     Degree RotateVelocity { get; }
@@ -34,9 +34,9 @@ public interface IRotating
 
 public class RotateCommand : ICommand
 {
-    private readonly IRotating obj;
+    private readonly IRotate obj;
 
-    public RotateCommand(IRotating obj)
+    public RotateCommand(IRotate obj)
     {
         this.obj = obj;
     }
