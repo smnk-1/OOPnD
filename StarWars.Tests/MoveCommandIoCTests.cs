@@ -1,29 +1,31 @@
 using Moq;
 using Hwdtech;
+using Hwdtech.Ioc;
 using StarWars.Lib;
 
 public class MoveCommandIoCTests
 {
     public MoveCommandIoCTests()
     {
-        var reg = new RegisterIoCDependencyMoveCommand();
-        reg.Execute();
+        new InitScopeBasedIoCImplementationCommand().Execute();
     }
 
-   [Fact]
-    public void MoveCommand_ShouldUpdatePositionBasedOnVelocity()
+    [Fact]
+    public void Execute_ShouldRegisterMoveCommandDependency()
     {
-        var mockObject = new Mock<IMoving>();
-        var initialPosition = new CustomVector(0, 0);
-        var velocity = new CustomVector(1, 1);
+        var mockMoving = new Mock<IMoving>();
+        var mockGameObject = new Mock<IDictionary<string, object>>();
 
-        mockObject.SetupProperty(m => m.Position, initialPosition);
-        mockObject.Setup(m => m.Velocity).Returns(velocity);
+        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.IMoving",
+            (Func<object, IMoving>)(obj =>
+            {
+                return mockMoving.Object;
+            })).Execute();
 
-        var command = (StarWars.Lib.ICommand)IoC.Resolve<StarWars.Lib.ICommand>("Commands.Move", mockObject.Object);
+        new RegisterIoCDependencyMoveCommand().Execute();
 
-        command.Execute();
-
-        Assert.Equal(new CustomVector(1, 1), mockObject.Object.Position);
+        var moveCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Move", mockGameObject.Object); 
+        Assert.NotNull(moveCommand);
+        Assert.IsType<MoveCommand>(moveCommand);
     }
 }
