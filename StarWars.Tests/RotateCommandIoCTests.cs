@@ -1,6 +1,6 @@
-using Moq;
-using Hwdtech;
+﻿using Hwdtech;
 using Hwdtech.Ioc;
+using Moq;
 using StarWars.Lib;
 
 public class RotateCommandIoCTests
@@ -24,7 +24,7 @@ public class RotateCommandIoCTests
 
         new RegisterIoCDependencyRotateCommand().Execute();
 
-        var rotateCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Rotate", mockGameObject.Object); 
+        var rotateCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Rotate", mockGameObject.Object);
         Assert.NotNull(rotateCommand);
         Assert.IsType<RotateCommand>(rotateCommand);
     }
