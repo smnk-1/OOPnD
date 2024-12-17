@@ -1,23 +1,26 @@
 ﻿namespace StarWars.Lib;
 
-public interface ICommandInjectable : ICommand
+public interface ICommandInjectable
 {
-    void InjectDependencies(IServiceProvider serviceProvider);
+    void Inject(ICommand command);
+    void Execute();
 }
 
-public class CommandInjectableCommand : ICommandInjectable
+public class CommandInjectableCommand : ICommand, ICommandInjectable
 {
-    private IMoving _obj;
+    private ICommand _injectedCommand;
 
-    public void InjectDependencies(IServiceProvider serviceProvider)
+    public void Inject(ICommand command)
     {
-        _obj = serviceProvider.GetRequiredService<IMoving>();
+        _injectedCommand = command;
     }
 
     public void Execute()
     {
-        if (_obj == null) throw new InvalidOperationException("Dependencies not injected");
-        _obj.Position += _obj.Velocity;
+        if (_injectedCommand == null)
+        {
+            throw new InvalidOperationException("Command not injected");
+        }
+        _injectedCommand.Execute();
     }
 }
-
