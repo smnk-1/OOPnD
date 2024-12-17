@@ -119,14 +119,15 @@ public class DegreeCommandTests
     public void AngleHasHashCode()
     {
         var angle = new Angle(15);
-        Assert.True(angle.GetHashCode() != null);
+        var hashCode = angle.GetHashCode();
+        Assert.NotEqual(0, hashCode);
     }
 
     [Fact]
     public void AngleNotEqualsNull()
     {
         var angle1 = new Angle(1);
-        Assert.False(angle1.Equals(null));
+        Assert.True(angle1 != null);
     }
 
     [Fact]
@@ -184,6 +185,50 @@ public class DegreeCommandTests
         var angle = new Angle(3);
         angle.Numerator = 5;
         Assert.Equal(5, angle.Numerator);
+    }
+
+    [Fact]
+    public void Test() 
+    {
+        var angle1 = new Angle(3);
+        var angle2 = new Angle(4);
+        var angle = angle1 + angle2;
+        Assert.Equal(7, angle.Numerator);
+    }
+    //////
+    [Fact]
+    public void Equals_ReturnsFalse_WhenComparedToNull()
+    {
+        var angle = new Angle(1);
+        var result = angle.Equals(null);
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Equals_ReturnsFalse_WhenComparedToDifferentType()
+    {
+        var angle = new Angle(1);
+        var differentObject = new object();
+        var result = angle.Equals(differentObject);
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Equals_ReturnsTrue_WhenAnglesAreEqual()
+    {
+        var angle1 = new Angle(1);
+        var angle2 = new Angle(9); 
+        var result = angle1.Equals(angle2);
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void Equals_ReturnsFalse_WhenAnglesAreNotEqual()
+    {
+        var angle1 = new Angle(1);
+        var angle2 = new Angle(2);
+        var result = angle1.Equals(angle2);
+        Assert.False(result);
     }
 }
 
