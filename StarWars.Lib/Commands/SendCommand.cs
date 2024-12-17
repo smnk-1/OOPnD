@@ -1,4 +1,4 @@
-namespace StarWars.Lib;
+﻿namespace StarWars.Lib;
 
 public class SendCommand : ICommand
 {
@@ -10,12 +10,12 @@ public class SendCommand : ICommand
         this.cmd = cmd;
         this.receiver = receiver;
     }
-    
+
     public void Execute()
     {
         try
         {
-        receiver.Receive(cmd);
+            receiver.Receive(cmd);
         }
         catch (Exception exception)
         {
