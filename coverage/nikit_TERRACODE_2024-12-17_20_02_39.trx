@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="1db8e47c-b212-44e9-9036-4807a2f892a6" name="nikit@TERRACODE 2024-12-17 20:02:39" runUser="TERRACODE\nikit" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-12-17T20:02:39.0652845+06:00" queuing="2024-12-17T20:02:39.0652847+06:00" start="2024-12-17T20:02:37.9956461+06:00" finish="2024-12-17T20:02:39.3095856+06:00" />
+  <TestSettings name="default" id="7df94c49-b9e7-4317-87d2-23dec1c3f4aa">
+    <Deployment runDeploymentRoot="nikit_TERRACODE_2024-12-17_20_02_39" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="907e229c-1dde-4256-8c07-6e8f5d49e43a" testId="e7731891-1f60-70ba-dcae-c03fbea36cf5" testName="StarWars.Test.RotateCommandTests.TestCannotReadAngle" computerName="TERRACODE" duration="00:00:00.0004089" startTime="2024-12-17T20:02:39.0707047+06:00" endTime="2024-12-17T20:02:39.0707049+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="907e229c-1dde-4256-8c07-6e8f5d49e43a" />
+    <UnitTestResult executionId="8bc8ef9c-d1e8-4ed8-94f7-c736602fdf40" testId="d2264a18-97e5-2698-e4f2-b0aba558ec47" testName="StarWars.Test.DegreeCommandTests.CosGivesCorrectValue" computerName="TERRACODE" duration="00:00:00.0001219" startTime="2024-12-17T20:02:39.0395080+06:00" endTime="2024-12-17T20:02:39.0395080+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8bc8ef9c-d1e8-4ed8-94f7-c736602fdf40" />
+    <UnitTestResult executionId="1a58f8e6-db3f-4846-946b-00fa58891f11" testId="b92beb64-22d0-ada7-d00e-1c79d1574d63" testName="StarWars.Test.DegreeCommandTests.FifteenSymbolEqualsTwentyThree" computerName="TERRACODE" duration="00:00:00.0000642" startTime="2024-12-17T20:02:39.0181425+06:00" endTime="2024-12-17T20:02:39.0181426+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a58f8e6-db3f-4846-946b-00fa58891f11" />
+    <UnitTestResult executionId="976c616d-de74-4d2c-8e25-1d8baf0f40d5" testId="20a9e2a6-a2a5-c19e-5bcb-d52abcd8a3d7" testName="StarWars.Test.DegreeCommandTests.NumeratorShouldNotChange" computerName="TERRACODE" duration="00:00:00.0159500" startTime="2024-12-17T20:02:39.0060565+06:00" endTime="2024-12-17T20:02:39.0060770+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="976c616d-de74-4d2c-8e25-1d8baf0f40d5" />
+    <UnitTestResult executionId="f3598101-853b-4046-a290-2211150efb8d" testId="76a4bb4b-0384-238f-9612-550e9ddc2ba5" testName="StarWars.Test.DegreeCommandTests.NegativeAngle_ShouldNormalizeToPositive" computerName="TERRACODE" duration="00:00:00.0000594" startTime="2024-12-17T20:02:39.0183741+06:00" endTime="2024-12-17T20:02:39.0183742+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3598101-853b-4046-a290-2211150efb8d" />
+    <UnitTestResult executionId="0ac5679b-e6b9-422b-b25f-45595f5f9bf6" testId="acfd38b8-7ce4-87c7-b27f-0eae9ab48a18" testName="StarWars.Test.DegreeCommandTests.Addition_ShouldNormalizeResult" computerName="TERRACODE" duration="00:00:00.0000715" startTime="2024-12-17T20:02:39.0176412+06:00" endTime="2024-12-17T20:02:39.0176413+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ac5679b-e6b9-422b-b25f-45595f5f9bf6" />
+    <UnitTestResult executionId="dcbb11c3-11ac-4aa0-98cd-327ce003c112" testId="64f7d3dd-671d-48a9-6d77-2792e4f70722" testName="StarWars.Test.RotateCommandTests.TestCannotReadRotateVelocity" computerName="TERRACODE" duration="00:00:00.0672643" startTime="2024-12-17T20:02:39.0548889+06:00" endTime="2024-12-17T20:02:39.0548892+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dcbb11c3-11ac-4aa0-98cd-327ce003c112" />
+    <UnitTestResult executionId="2112c597-1088-4710-8d19-40d14264c43b" testId="11e1c685-9bdd-88db-2ca9-3cb0392c9392" testName="StarWars.Test.RotateCommandTests.Test45plus90" computerName="TERRACODE" duration="00:00:00.0045151" startTime="2024-12-17T20:02:39.0702536+06:00" endTime="2024-12-17T20:02:39.0702538+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2112c597-1088-4710-8d19-40d14264c43b" />
+    <UnitTestResult executionId="c6f5235e-cbe7-4fcb-b518-f07a60930022" testId="da83f552-a85b-34e5-5d3a-0a286c957041" testName="StarWars.Test.DegreeCommandTests.FivePlusSevenEqualsFour" computerName="TERRACODE" duration="00:00:00.0001398" startTime="2024-12-17T20:02:39.0137360+06:00" endTime="2024-12-17T20:02:39.0137361+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c6f5235e-cbe7-4fcb-b518-f07a60930022" />
+    <UnitTestResult executionId="f78d26fc-e9af-40ce-9cf0-ae39cf0f198a" testId="16943db8-a99f-c497-1927-f242de47f4d2" testName="StarWars.Test.DegreeCommandTests.OneNotEqualsTwo" computerName="TERRACODE" duration="00:00:00.0000555" startTime="2024-12-17T20:02:39.0392849+06:00" endTime="2024-12-17T20:02:39.0392850+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f78d26fc-e9af-40ce-9cf0-ae39cf0f198a" />
+    <UnitTestResult executionId="77d985fb-a4ef-45df-b3e8-3d458206a6b6" testId="e7b6bd48-a91a-aaba-d549-c24fbbded57b" testName="StarWars.Test.DegreeCommandTests.NumeratorShouldNormalize" computerName="TERRACODE" duration="00:00:00.0001334" startTime="2024-12-17T20:02:39.0128226+06:00" endTime="2024-12-17T20:02:39.0128227+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77d985fb-a4ef-45df-b3e8-3d458206a6b6" />
+    <UnitTestResult executionId="6bb1b2b5-57c5-4d2b-9988-ced6a8f315e2" testId="ddd758ee-9833-c6bc-9f6b-c8e6c12a016f" testName="StarWars.Test.DegreeCommandTests.AngleNotEqualsNotAngle" computerName="TERRACODE" duration="00:00:00.0002370" startTime="2024-12-17T20:02:39.0377973+06:00" endTime="2024-12-17T20:02:39.0377974+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6bb1b2b5-57c5-4d2b-9988-ced6a8f315e2" />
+    <UnitTestResult executionId="cf0a9995-21fc-4051-8a3d-4a62b35bc6aa" testId="dabd223b-f7d9-2eb5-2271-d614f797e07d" testName="StarWars.Test.DegreeCommandTests.AngleNotEqualsNull" computerName="TERRACODE" duration="00:00:00.0000554" startTime="2024-12-17T20:02:39.0381355+06:00" endTime="2024-12-17T20:02:39.0381356+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf0a9995-21fc-4051-8a3d-4a62b35bc6aa" />
+    <UnitTestResult executionId="5adbbe91-ce90-4d5e-8549-c4f513c9f312" testId="86059e1b-86ce-b46b-c535-ab190a984815" testName="StarWars.Test.DegreeCommandTests.SinGivesCorrectValue" computerName="TERRACODE" duration="00:00:00.0003551" startTime="2024-12-17T20:02:39.0179066+06:00" endTime="2024-12-17T20:02:39.0179066+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5adbbe91-ce90-4d5e-8549-c4f513c9f312" />
+    <UnitTestResult executionId="46a0b39c-d810-4d72-8988-4b5517f65f95" testId="e9fcf1e7-e0a5-fb67-bad8-5d2a227da781" testName="StarWars.Test.DegreeCommandTests.NumeratorShouldUpdateValue" computerName="TERRACODE" duration="00:00:00.0000542" startTime="2024-12-17T20:02:39.0390578+06:00" endTime="2024-12-17T20:02:39.0390578+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46a0b39c-d810-4d72-8988-4b5517f65f95" />
+    <UnitTestResult executionId="c74b727e-1100-4c89-8217-fdc9b9248eea" testId="cfb378b0-daa5-c153-6ba8-e8e1080f66b8" testName="StarWars.Test.RotateCommandTests.TestCannotSetAngle" computerName="TERRACODE" duration="00:00:00.0107058" startTime="2024-12-17T20:02:39.0656851+06:00" endTime="2024-12-17T20:02:39.0656854+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c74b727e-1100-4c89-8217-fdc9b9248eea" />
+    <UnitTestResult executionId="c94c9535-f5b6-481a-9178-31bf9da2f306" testId="203cf6ad-0cb4-e9b2-d0ea-04e7b4c22672" testName="StarWars.Test.DegreeCommandTests.NumeratorShouldNormalizeNegative" computerName="TERRACODE" duration="00:00:00.0000574" startTime="2024-12-17T20:02:39.0388271+06:00" endTime="2024-12-17T20:02:39.0388271+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c94c9535-f5b6-481a-9178-31bf9da2f306" />
+    <UnitTestResult executionId="bdade3e3-77f6-401e-927e-5e487ce47b09" testId="404a6a86-a629-9e01-ac0a-915a70c42553" testName="StarWars.Test.DegreeCommandTests.AngleHasHashCode" computerName="TERRACODE" duration="00:00:00.0001077" startTime="2024-12-17T20:02:39.0383698+06:00" endTime="2024-12-17T20:02:39.0383698+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bdade3e3-77f6-401e-927e-5e487ce47b09" />
+    <UnitTestResult executionId="bada57e3-933d-47af-be4b-15aa8d53cd17" testId="0092940d-eb2b-fd49-be44-451e341cec58" testName="StarWars.Test.DegreeCommandTests.OneNotSymbolEqualsTwo" computerName="TERRACODE" duration="00:00:00.0001583" startTime="2024-12-17T20:02:39.0134672+06:00" endTime="2024-12-17T20:02:39.0134673+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bada57e3-933d-47af-be4b-15aa8d53cd17" />
+    <UnitTestResult executionId="59f1edc6-12a6-44df-98b5-ff75ca72ea25" testId="550e9eb4-e094-4967-f545-1eea23298d0b" testName="StarWars.Test.DegreeCommandTests.FifteenEqualsTwentyThree" computerName="TERRACODE" duration="00:00:00.0000636" startTime="2024-12-17T20:02:39.0385998+06:00" endTime="2024-12-17T20:02:39.0385999+06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59f1edc6-12a6-44df-98b5-ff75ca72ea25" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="StarWars.Test.RotateCommandTests.TestCannotSetAngle" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="cfb378b0-daa5-c153-6ba8-e8e1080f66b8">
+      <Execution id="c74b727e-1100-4c89-8217-fdc9b9248eea" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.RotateCommandTests" name="TestCannotSetAngle" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.NumeratorShouldNormalizeNegative" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="203cf6ad-0cb4-e9b2-d0ea-04e7b4c22672">
+      <Execution id="c94c9535-f5b6-481a-9178-31bf9da2f306" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="NumeratorShouldNormalizeNegative" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.NegativeAngle_ShouldNormalizeToPositive" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="76a4bb4b-0384-238f-9612-550e9ddc2ba5">
+      <Execution id="f3598101-853b-4046-a290-2211150efb8d" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="NegativeAngle_ShouldNormalizeToPositive" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.AngleHasHashCode" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="404a6a86-a629-9e01-ac0a-915a70c42553">
+      <Execution id="bdade3e3-77f6-401e-927e-5e487ce47b09" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="AngleHasHashCode" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.SinGivesCorrectValue" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="86059e1b-86ce-b46b-c535-ab190a984815">
+      <Execution id="5adbbe91-ce90-4d5e-8549-c4f513c9f312" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="SinGivesCorrectValue" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.Addition_ShouldNormalizeResult" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="acfd38b8-7ce4-87c7-b27f-0eae9ab48a18">
+      <Execution id="0ac5679b-e6b9-422b-b25f-45595f5f9bf6" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="Addition_ShouldNormalizeResult" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.FivePlusSevenEqualsFour" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="da83f552-a85b-34e5-5d3a-0a286c957041">
+      <Execution id="c6f5235e-cbe7-4fcb-b518-f07a60930022" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="FivePlusSevenEqualsFour" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.NumeratorShouldNormalize" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="e7b6bd48-a91a-aaba-d549-c24fbbded57b">
+      <Execution id="77d985fb-a4ef-45df-b3e8-3d458206a6b6" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="NumeratorShouldNormalize" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.OneNotEqualsTwo" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="16943db8-a99f-c497-1927-f242de47f4d2">
+      <Execution id="f78d26fc-e9af-40ce-9cf0-ae39cf0f198a" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="OneNotEqualsTwo" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.RotateCommandTests.Test45plus90" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="11e1c685-9bdd-88db-2ca9-3cb0392c9392">
+      <Execution id="2112c597-1088-4710-8d19-40d14264c43b" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.RotateCommandTests" name="Test45plus90" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.FifteenEqualsTwentyThree" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="550e9eb4-e094-4967-f545-1eea23298d0b">
+      <Execution id="59f1edc6-12a6-44df-98b5-ff75ca72ea25" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="FifteenEqualsTwentyThree" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.RotateCommandTests.TestCannotReadRotateVelocity" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="64f7d3dd-671d-48a9-6d77-2792e4f70722">
+      <Execution id="dcbb11c3-11ac-4aa0-98cd-327ce003c112" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.RotateCommandTests" name="TestCannotReadRotateVelocity" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.FifteenSymbolEqualsTwentyThree" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="b92beb64-22d0-ada7-d00e-1c79d1574d63">
+      <Execution id="1a58f8e6-db3f-4846-946b-00fa58891f11" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="FifteenSymbolEqualsTwentyThree" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.OneNotSymbolEqualsTwo" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="0092940d-eb2b-fd49-be44-451e341cec58">
+      <Execution id="bada57e3-933d-47af-be4b-15aa8d53cd17" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="OneNotSymbolEqualsTwo" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.NumeratorShouldNotChange" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="20a9e2a6-a2a5-c19e-5bcb-d52abcd8a3d7">
+      <Execution id="976c616d-de74-4d2c-8e25-1d8baf0f40d5" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="NumeratorShouldNotChange" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.RotateCommandTests.TestCannotReadAngle" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="e7731891-1f60-70ba-dcae-c03fbea36cf5">
+      <Execution id="907e229c-1dde-4256-8c07-6e8f5d49e43a" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.RotateCommandTests" name="TestCannotReadAngle" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.AngleNotEqualsNull" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="dabd223b-f7d9-2eb5-2271-d614f797e07d">
+      <Execution id="cf0a9995-21fc-4051-8a3d-4a62b35bc6aa" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="AngleNotEqualsNull" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.CosGivesCorrectValue" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="d2264a18-97e5-2698-e4f2-b0aba558ec47">
+      <Execution id="8bc8ef9c-d1e8-4ed8-94f7-c736602fdf40" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="CosGivesCorrectValue" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.NumeratorShouldUpdateValue" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="e9fcf1e7-e0a5-fb67-bad8-5d2a227da781">
+      <Execution id="46a0b39c-d810-4d72-8988-4b5517f65f95" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="NumeratorShouldUpdateValue" />
+    </UnitTest>
+    <UnitTest name="StarWars.Test.DegreeCommandTests.AngleNotEqualsNotAngle" storage="f:\coding\study\oopnd\starwars.tests\bin\debug\net8.0\starwars.tests.dll" id="ddd758ee-9833-c6bc-9f6b-c8e6c12a016f">
+      <Execution id="6bb1b2b5-57c5-4d2b-9988-ced6a8f315e2" />
+      <TestMethod codeBase="F:\Coding\study\OOPnD\StarWars.Tests\bin\Debug\net8.0\StarWars.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="StarWars.Test.DegreeCommandTests" name="AngleNotEqualsNotAngle" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e7731891-1f60-70ba-dcae-c03fbea36cf5" executionId="907e229c-1dde-4256-8c07-6e8f5d49e43a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2264a18-97e5-2698-e4f2-b0aba558ec47" executionId="8bc8ef9c-d1e8-4ed8-94f7-c736602fdf40" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b92beb64-22d0-ada7-d00e-1c79d1574d63" executionId="1a58f8e6-db3f-4846-946b-00fa58891f11" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="20a9e2a6-a2a5-c19e-5bcb-d52abcd8a3d7" executionId="976c616d-de74-4d2c-8e25-1d8baf0f40d5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="76a4bb4b-0384-238f-9612-550e9ddc2ba5" executionId="f3598101-853b-4046-a290-2211150efb8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="acfd38b8-7ce4-87c7-b27f-0eae9ab48a18" executionId="0ac5679b-e6b9-422b-b25f-45595f5f9bf6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="64f7d3dd-671d-48a9-6d77-2792e4f70722" executionId="dcbb11c3-11ac-4aa0-98cd-327ce003c112" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="11e1c685-9bdd-88db-2ca9-3cb0392c9392" executionId="2112c597-1088-4710-8d19-40d14264c43b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="da83f552-a85b-34e5-5d3a-0a286c957041" executionId="c6f5235e-cbe7-4fcb-b518-f07a60930022" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16943db8-a99f-c497-1927-f242de47f4d2" executionId="f78d26fc-e9af-40ce-9cf0-ae39cf0f198a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7b6bd48-a91a-aaba-d549-c24fbbded57b" executionId="77d985fb-a4ef-45df-b3e8-3d458206a6b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ddd758ee-9833-c6bc-9f6b-c8e6c12a016f" executionId="6bb1b2b5-57c5-4d2b-9988-ced6a8f315e2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dabd223b-f7d9-2eb5-2271-d614f797e07d" executionId="cf0a9995-21fc-4051-8a3d-4a62b35bc6aa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="86059e1b-86ce-b46b-c535-ab190a984815" executionId="5adbbe91-ce90-4d5e-8549-c4f513c9f312" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9fcf1e7-e0a5-fb67-bad8-5d2a227da781" executionId="46a0b39c-d810-4d72-8988-4b5517f65f95" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cfb378b0-daa5-c153-6ba8-e8e1080f66b8" executionId="c74b727e-1100-4c89-8217-fdc9b9248eea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="203cf6ad-0cb4-e9b2-d0ea-04e7b4c22672" executionId="c94c9535-f5b6-481a-9178-31bf9da2f306" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="404a6a86-a629-9e01-ac0a-915a70c42553" executionId="bdade3e3-77f6-401e-927e-5e487ce47b09" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0092940d-eb2b-fd49-be44-451e341cec58" executionId="bada57e3-933d-47af-be4b-15aa8d53cd17" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="550e9eb4-e094-4967-f545-1eea23298d0b" executionId="59f1edc6-12a6-44df-98b5-ff75ca72ea25" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Список результатов" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Все загруженные результаты" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="20" executed="20" passed="20" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.3.1+6b60a9e56a (64-bit .NET 8.0.10)&#xD;
+[xUnit.net 00:00:00.08]   Discovering: StarWars.Tests&#xD;
+[xUnit.net 00:00:00.11]   Discovered:  StarWars.Tests&#xD;
+[xUnit.net 00:00:00.11]   Starting:    StarWars.Tests&#xD;
+[xUnit.net 00:00:00.24]   Finished:    StarWars.Tests&#xD;
+</StdOut>
+    </Output>
+    <CollectorDataEntries>
+      <Collector agentName="TERRACODE" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="TERRACODE\coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>
