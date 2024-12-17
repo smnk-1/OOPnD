@@ -69,11 +69,6 @@ public class Angle
     {
         return Math.Cos(Value * Math.PI / 180);
     }
-
-    public override string ToString()
-    {
-        return $"({_numerator}, {Denominator})";
-    }
 }
 
 public interface IRotate
