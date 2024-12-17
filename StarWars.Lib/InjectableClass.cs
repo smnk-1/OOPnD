@@ -7,7 +7,7 @@ public interface ICommandInjectable : ICommand
 
 public class CommandInjectableCommand : ICommandInjectable
 {
-    private IMoving _obj; // Теперь поле не инициализируется в конструкторе
+    private IMoving _obj;
 
     public void InjectDependencies(IServiceProvider serviceProvider)
     {
