@@ -17,10 +17,7 @@ public class CommandInjectableCommand : ICommand, ICommandInjectable
 
     public void Execute()
     {
-        if (_injectedCommand == null)
-        {
-            throw new InvalidOperationException("Command not injected");
-        }
-        _injectedCommand.Execute();
+        _injectedCommand?.Execute();
     }
 }
+
