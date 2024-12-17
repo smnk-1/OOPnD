@@ -119,7 +119,6 @@ public class DegreeCommandTests
     public void AngleHasHashCode()
     {
         var angle = new Angle(15);
-
         Assert.True(angle.GetHashCode() != null);
     }
 
@@ -128,6 +127,31 @@ public class DegreeCommandTests
     {
         var angle1 = new Angle(1);
         Assert.False(angle1.Equals(null));
+    }
+
+    [Fact]
+    public void AngleNotEqualsNotAngle()
+    {
+        var angle1 = new Angle(1);
+        Assert.False(angle1.Equals(1));
+    }
+
+    [Fact]
+    public void SinGivesCorrectValue()
+    {
+        var angle = new Angle(3);
+        var expected = Math.Sin(135 * Math.PI / 180);
+        var actual = angle.Sin();
+        Assert.Equal(expected, actual, 1e-10); // Проверка с учетом погрешности
+    }
+
+    [Fact]
+    public void CosGivesCorrectValue()
+    {
+        var angle = new Angle(3); // 3/8 от 360 градусов = 135 градусов
+        var expected = Math.Cos(135 * Math.PI / 180); // Косинус 135 градусов
+        var actual = angle.Cos();
+        Assert.Equal(expected, actual, 1e-10); // Проверка с учетом погрешности
     }
 }
 

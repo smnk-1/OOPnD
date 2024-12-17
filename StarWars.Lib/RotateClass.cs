@@ -42,20 +42,17 @@ public class Angle
 
     public override bool Equals(object obj)
     {
-        // Проверяем, является ли объект null
         if (obj == null)
         {
             return false;
         }
 
-        // Проверяем, является ли объект типа Angle
         if (obj is Angle otherAngle)
         {
-            // Сравниваем числители
             return Numerator == otherAngle.Numerator;
         }
 
-        return false; // Если объект не Angle, возвращаем false
+        return false;
     }
 
     public override int GetHashCode()
