@@ -1,6 +1,5 @@
-﻿using StarWars.Lib;
-using Moq;
-using System;
+﻿using Moq;
+using StarWars.Lib;
 
 namespace StarWars.Tests
 {
