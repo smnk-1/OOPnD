@@ -196,5 +196,99 @@ public class AngleTests
         var angle = angle1 + angle2;
         Assert.Equal(2, angle.Numerator);
     }
+    //////
+    [Fact]
+    public void Equals_ReturnsFalse_WhenComparedToNull()
+    {
+        var angle = new Angle(1);
+        var result = angle.Equals(null);
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Equals_ReturnsFalse_WhenComparedToDifferentType()
+    {
+        var angle = new Angle(1);
+        var differentObject = new object();
+        var result = angle.Equals(differentObject);
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void Equals_ReturnsTrue_WhenAnglesAreEqual()
+    {
+        var angle1 = new Angle(1);
+        var angle2 = new Angle(9);
+        var result = angle1.Equals(angle2);
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void Equals_ReturnsFalse_WhenAnglesAreNotEqual()
+    {
+        var angle1 = new Angle(1);
+        var angle2 = new Angle(2);
+        var result = angle1.Equals(angle2);
+        Assert.False(result);
+    }
+
+    [Fact]
+    public void GetHashCode_ShouldReturnSameHashForEqualAngles()
+    {
+        var angle1 = new Angle(2);
+        var angle2 = new Angle(2);
+        Assert.Equal(angle1.GetHashCode(), angle2.GetHashCode());
+    }
+
+    [Fact]
+    public void ValueTest()
+    {
+        var angle = new Angle(2);
+        Assert.Equal(90.0, angle.Value);
+    }
+
+    [Fact]
+    public void NumerTest()
+    {
+        var angle = new Angle(2);
+        angle.Numerator = 3;
+        Assert.Equal(3, angle.Numerator);
+    }
+    //
+    [Fact]
+    public void Value_NumeratorIs1_Returns360()
+    {
+        var angle = new Angle(1);
+        Assert.Equal(45.0, angle.Value);
+    }
+
+    [Fact]
+    public void Value_NumeratorIs0_Returns0()
+    {
+        var angle = new Angle(0);
+        Assert.Equal(0.0, angle.Value);
+    }
+
+    [Fact]
+    public void Value_NumeratorIsNegative1_ReturnsNegative360()
+    {
+        var angle = new Angle(-1);
+        Assert.Equal(315.0, angle.Value);
+    }
+
+    [Fact]
+    public void Value_NumeratorIsMax_Returns360()
+    {
+        var angle = new Angle(int.MaxValue);
+        var exp = (int.MaxValue % 8) * 45;
+        Assert.Equal(exp, angle.Value);
+    }
+
+    [Fact]
+    public void Value_NumeratorIsMin_Returns360()
+    {
+        var angle = new Angle(int.MinValue);
+        Assert.Equal(int.MinValue % 8, angle.Value); 
+    }
 }
 
