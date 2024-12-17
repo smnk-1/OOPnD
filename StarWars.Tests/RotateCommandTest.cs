@@ -288,7 +288,7 @@ public class AngleTests
     public void Value_NumeratorIsMin_Returns360()
     {
         var angle = new Angle(int.MinValue);
-        Assert.Equal(int.MinValue % 8, angle.Value); 
+        Assert.Equal(int.MinValue % 8, angle.Value);
     }
 }
 
