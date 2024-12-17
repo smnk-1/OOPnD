@@ -18,10 +18,10 @@ public class Angle
         {
             _numerator = value;
             Normalize();
-        }
+        }//
     }
 
-    public double Value => (double)_numerator / Denominator * 360;
+    public double Value => (double)_numerator / Denominator * 360;//
 
     private void Normalize()
     {
