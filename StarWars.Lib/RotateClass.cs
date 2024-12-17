@@ -1,42 +1,96 @@
-﻿namespace StarWars.Lib;
+﻿﻿namespace StarWars.Lib;
 
-public class Degree
+public class Angle
 {
-    private int _value;
+    private int _numerator;
+    private const int Denominator = 8;
 
-    public Degree(int value)
+    public Angle(int numerator)
     {
-        Value = value;
+        _numerator = numerator;
+        Normalize();
     }
 
-    public int Value
+    public int Numerator
     {
-        get => _value;
-        set => _value = Normalize(value);
+        get => _numerator;
+        set
+        {
+            _numerator = value;
+            Normalize();
+        }
     }
 
-    private static int Normalize(int value)
+    public double Value => (double)_numerator / Denominator * 360;
+
+    private void Normalize()
     {
-        return (value % 360 + 360) % 360;
+        if (_numerator >= Denominator)
+        {
+            _numerator = _numerator % Denominator;
+        }
+        else if (_numerator < 0)
+        {
+            _numerator = (Denominator + _numerator % Denominator) % Denominator;
+        }
     }
 
-    public static Degree operator +(Degree d1, Degree d2)
+    public static Angle operator +(Angle a1, Angle a2)
     {
-        return new Degree(d1.Value + d2.Value);
+        return new Angle(a1.Numerator + a2.Numerator);
+    }
+
+    public override bool Equals(object obj)
+    {
+        // Проверяем, является ли объект null
+        if (obj == null)
+        {
+            return false;
+        }
+
+        // Проверяем, является ли объект типа Angle
+        if (obj is Angle otherAngle)
+        {
+            // Сравниваем числители
+            return Numerator == otherAngle.Numerator;
+        }
+
+        return false; // Если объект не Angle, возвращаем false
+    }
+
+
+    public override int GetHashCode()
+    {
+        return _numerator.GetHashCode();
+    }
+
+    public double Sin()
+    {
+        return Math.Sin(Value * Math.PI / 180);
+    }
+
+    public double Cos()
+    {
+        return Math.Cos(Value * Math.PI / 180);
+    }
+
+    public override string ToString()
+    {
+        return $"({_numerator}, {Denominator})";
     }
 }
 
-public interface IRotating
+public interface IRotate
 {
-    Degree Angle { get; set; }
-    Degree RotateVelocity { get; }
+    Angle Angle { get; set; }
+    Angle RotateVelocity { get; }
 }
 
 public class RotateCommand : ICommand
 {
-    private readonly IRotating obj;
+    private readonly IRotate obj;
 
-    public RotateCommand(IRotating obj)
+    public RotateCommand(IRotate obj)
     {
         this.obj = obj;
     }
@@ -46,4 +100,3 @@ public class RotateCommand : ICommand
         obj.Angle = obj.Angle + obj.RotateVelocity;
     }
 }
-
