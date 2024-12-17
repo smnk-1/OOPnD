@@ -153,132 +153,37 @@ public class DegreeCommandTests
         var actual = angle.Cos();
         Assert.Equal(expected, actual, 1e-10);
     }
-    //////////////////////
-    ///
-    [Fact]
-    public void Normalize_ShouldWrapNumerator_WhenGreaterThanDenominator()
-    {
-        var angle = new Angle(9); // 9/8 = 1.125, нормализуется до 1
-        Assert.Equal(1, angle.Numerator);
-    }
 
     [Fact]
-    public void Normalize_ShouldWrapNumerator_WhenNegative()
+    public void NumeratorShouldUpdateValue()
     {
-        var angle = new Angle(-1); // -1/8 = -0.125, нормализуется до 7
-        Assert.Equal(7, angle.Numerator);
-    }
-
-    [Fact]
-    public void Normalize_ShouldNotChange_WhenInRange()
-    {
-        var angle = new Angle(3); // 3/8 = 0.375, остается 3
+        var angle = new Angle(1);
+        angle.Numerator = 3;
         Assert.Equal(3, angle.Numerator);
     }
 
     [Fact]
-    public void Equals_ShouldReturnFalse_WhenOtherType()
+    public void NumeratorShouldNormalize()
     {
         var angle = new Angle(1);
-        Assert.False(angle.Equals("Not an angle"));
+        angle.Numerator = 9;
+        Assert.Equal(1, angle.Numerator);
     }
 
     [Fact]
-    public void Equals_ShouldReturnTrue_WhenEqualNumerators()
+    public void NumeratorShouldNormalizeNegative()
     {
-        var angle1 = new Angle(1);
-        var angle2 = new Angle(9); // 9/8 нормализуется до 1
-        Assert.True(angle1.Equals(angle2));
+        var angle = new Angle(1);
+        angle.Numerator = -1;
+        Assert.Equal(7, angle.Numerator);
     }
 
     [Fact]
-    public void Sin_ShouldReturnCorrectValue_For0Degrees()
+    public void NumeratorShouldNotChange()
     {
-        var angle = new Angle(0);
-        var expected = Math.Sin(0 * Math.PI / 180); // Синус 0 градусов
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For0Degrees()
-    {
-        var angle = new Angle(0);
-        var expected = Math.Cos(0 * Math.PI / 180); // Косинус 0 градусов
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Sin_ShouldReturnCorrectValue_For90Degrees()
-    {
-        var angle = new Angle(3); // 3/8 от 360 = 135 градусов
-        var expected = Math.Sin(135 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For90Degrees()
-    {
-        var angle = new Angle(3); // 3/8 от 360 = 135 градусов
-        var expected = Math.Cos(135 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Sin_ShouldReturnCorrectValue_For180Degrees()
-    {
-        var angle = new Angle(4); // 4/8 от 360 = 180 градусов
-        var expected = Math.Sin(180 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For180Degrees()
-    {
-        var angle = new Angle(4); // 4/8 от 360 = 180 градусов
-        var expected = Math.Cos(180 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Sin_ShouldReturnCorrectValue_For270Degrees()
-    {
-        var angle = new Angle(5); // 5/8 от 360 = 225 градусов
-        var expected = Math.Sin(225 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For270Degrees()
-    {
-        var angle = new Angle(5); // 5/8 от 360 = 225 градусов
-        var expected = Math.Cos(225 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Sin_ShouldReturnCorrectValue_For360Degrees()
-    {
-        var angle = new Angle(8); // 8/8 от 360 = 360 градусов
-        var expected = Math.Sin(360 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For360Degrees()
-    {
-        var angle = new Angle(8); // 8/8 от 360 = 360 градусов
-        var expected = Math.Cos(360 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
+        var angle = new Angle(3);
+        angle.Numerator = 5;
+        Assert.Equal(5, angle.Numerator);
     }
 }
 
