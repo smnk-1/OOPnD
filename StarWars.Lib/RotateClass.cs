@@ -1,4 +1,4 @@
-﻿﻿namespace StarWars.Lib;
+﻿namespace StarWars.Lib;
 
 public class Angle
 {
@@ -57,7 +57,6 @@ public class Angle
 
         return false; // Если объект не Angle, возвращаем false
     }
-
 
     public override int GetHashCode()
     {

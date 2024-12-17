@@ -1,4 +1,4 @@
-﻿﻿using Moq;
+﻿using Moq;
 using StarWars.Lib;
 
 namespace StarWars.Test;
@@ -51,7 +51,8 @@ public class RotateCommandTests
         Assert.Throws<Exception>(rotate.Execute);
     }
 }
-public class DegreeCommandTests {
+public class DegreeCommandTests
+{
     [Fact]
     public void Addition_ShouldNormalizeResult()
     {
@@ -91,7 +92,7 @@ public class DegreeCommandTests {
     }
 
     [Fact]
-    public void FifteenSymbolEqualsTwentyThree() 
+    public void FifteenSymbolEqualsTwentyThree()
     {
         var angle1 = new Angle(15);
         var angle2 = new Angle(23);
@@ -99,7 +100,7 @@ public class DegreeCommandTests {
     }
 
     [Fact]
-    public void OneNotEqualsTwo() 
+    public void OneNotEqualsTwo()
     {
         var angle1 = new Angle(1);
         var angle2 = new Angle(2);
@@ -107,7 +108,7 @@ public class DegreeCommandTests {
     }
 
     [Fact]
-    public void OneNotSymbolEqualsTwo() 
+    public void OneNotSymbolEqualsTwo()
     {
         var angle1 = new Angle(1);
         var angle2 = new Angle(2);
@@ -120,6 +121,13 @@ public class DegreeCommandTests {
         var angle = new Angle(15);
 
         Assert.True(angle.GetHashCode() != null);
+    }
+
+    [Fact]
+    public void AngleNotEqualsNull()
+    {
+        var angle1 = new Angle(1);
+        Assert.False(angle1.Equals(null));
     }
 }
 
