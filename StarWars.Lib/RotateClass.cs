@@ -40,9 +40,9 @@ public class Angle
         return new Angle(a1.Numerator + a2.Numerator);
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        if (obj == null)
+        if (obj is null)
         {
             return false;
         }

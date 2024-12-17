@@ -188,7 +188,7 @@ public class DegreeCommandTests
     }
 
     [Fact]
-    public void Test() 
+    public void Test()
     {
         var angle1 = new Angle(3);
         var angle2 = new Angle(4);
@@ -217,7 +217,7 @@ public class DegreeCommandTests
     public void Equals_ReturnsTrue_WhenAnglesAreEqual()
     {
         var angle1 = new Angle(1);
-        var angle2 = new Angle(9); 
+        var angle2 = new Angle(9);
         var result = angle1.Equals(angle2);
         Assert.True(result);
     }
