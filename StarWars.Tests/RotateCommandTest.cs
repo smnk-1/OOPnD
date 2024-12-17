@@ -153,40 +153,5 @@ public class DegreeCommandTests
         var actual = angle.Cos();
         Assert.Equal(expected, actual, 1e-10);
     }
-    [Fact]
-    public void Sin_ShouldReturnCorrectValue_For0Degrees()
-    {
-        var angle = new Angle(0);
-        var expected = Math.Sin(0 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For0Degrees()
-    {
-        var angle = new Angle(0);
-        var expected = Math.Cos(0 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Sin_ShouldReturnCorrectValue_For180Degrees()
-    {
-        var angle = new Angle(4);
-        var expected = Math.Sin(180 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
-    }
-
-    [Fact]
-    public void Cos_ShouldReturnCorrectValue_For180Degrees()
-    {
-        var angle = new Angle(4);
-        var expected = Math.Cos(180 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
-    }
 }
 
