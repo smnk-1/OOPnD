@@ -21,7 +21,7 @@ public class Angle
         }//
     }
 
-    public double Value => (double)_numerator / Denominator * 360;//
+    public int Value => (int)((double)_numerator / Denominator * 360);
 
     private void Normalize()
     {
@@ -67,6 +67,7 @@ public class Angle
 
     public double Cos()
     {
+
         return Math.Cos(Value * Math.PI / 180);
     }
 }
