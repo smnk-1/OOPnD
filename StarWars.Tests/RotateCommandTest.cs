@@ -7,7 +7,7 @@ public class RotateCommandTests
     [Fact]
     public void Test45plus90()
     {
-        var rotating = new Mock<IRotate>();
+        var rotating = new Mock<IRotating>();
         rotating.SetupGet(r => r.Angle).Returns(() => new Angle(1));
         rotating.SetupGet(r => r.RotateVelocity).Returns(() => new Angle(1));
 
@@ -20,7 +20,7 @@ public class RotateCommandTests
     [Fact]
     public void TestCannotReadAngle()
     {
-        var rotating = new Mock<IRotate>();
+        var rotating = new Mock<IRotating>();
         rotating.SetupGet(m => m.Angle).Throws(new Exception("Cannot read angle"));
         rotating.SetupGet(m => m.RotateVelocity).Returns(() => new Angle(2));
         ICommand rotate = new RotateCommand(rotating.Object);
@@ -31,7 +31,7 @@ public class RotateCommandTests
     [Fact]
     public void TestCannotReadRotateVelocity()
     {
-        var rotating = new Mock<IRotate>();
+        var rotating = new Mock<IRotating>();
         rotating.SetupGet(m => m.Angle).Returns(() => new Angle(1));
         rotating.SetupGet(m => m.RotateVelocity).Throws(new Exception("Cannot read rotate velocity"));
         ICommand rotate = new RotateCommand(rotating.Object);
@@ -42,7 +42,7 @@ public class RotateCommandTests
     [Fact]
     public void TestCannotSetAngle()
     {
-        var rotating = new Mock<IRotate>();
+        var rotating = new Mock<IRotating>();
         rotating.SetupGet(m => m.Angle).Returns(() => new Angle(1));
         rotating.SetupGet(m => m.RotateVelocity).Returns(() => new Angle(2));
         rotating.SetupSet(m => m.Angle = It.IsAny<Angle>()).Throws(new Exception("Cannot set angle"));
@@ -280,8 +280,8 @@ public class AngleTests
     public void Value_NumeratorIsMax_Returns360()
     {
         var angle = new Angle(int.MaxValue);
-        var exp = (int.MaxValue % 8) * 45;
-        Assert.Equal(exp, angle.Value);
+        var exp = int.MaxValue % 8;
+        Assert.Equal(exp * 45, angle.Value);
     }
 
     [Fact]
