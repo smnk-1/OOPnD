@@ -1,35 +1,81 @@
 ﻿namespace StarWars.Lib;
 
-public class Degree
+public class Angle
 {
-    private int _value;
+    private int _numerator;
+    private const int Denominator = 8;
 
-    public Degree(int value)
+    public Angle(int numerator)
     {
-        Value = value;
+        _numerator = numerator;
+        Normalize();
     }
 
-    public int Value
+    public int Numerator
     {
-        get => _value;
-        set => _value = Normalize(value);
+        get => _numerator;
+        set
+        {
+            _numerator = value;
+            Normalize();
+        }//
     }
 
-    private static int Normalize(int value)
+    public int Value => (int)((double)_numerator / Denominator * 360);
+
+    private void Normalize()
     {
-        return (value % 360 + 360) % 360;
+        if (_numerator >= Denominator)
+        {
+            _numerator = _numerator % Denominator;
+        }
+        else if (_numerator < 0)
+        {
+            _numerator = (Denominator + _numerator % Denominator) % Denominator;
+        }
     }
 
-    public static Degree operator +(Degree d1, Degree d2)
+    public static Angle operator +(Angle a1, Angle a2)
     {
-        return new Degree(d1.Value + d2.Value);
+        return new Angle(a1.Numerator + a2.Numerator);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null)
+        {
+            return false;
+        }
+
+        if (obj is Angle otherAngle)
+        {
+            return Numerator == otherAngle.Numerator;
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return _numerator.GetHashCode();
+    }
+
+    public double Sin()
+    {
+        return Math.Sin(Value * Math.PI / 180);
+    }
+
+    public double Cos()
+    {
+
+        return Math.Cos(Value * Math.PI / 180);
     }
 }
 
 public interface IRotating
 {
-    Degree Angle { get; set; }
-    Degree RotateVelocity { get; }
+    Angle Angle { get; set; }
+    Angle RotateVelocity { get; }
 }
 
 public class RotateCommand : ICommand
@@ -46,4 +92,3 @@ public class RotateCommand : ICommand
         obj.Angle = obj.Angle + obj.RotateVelocity;
     }
 }
-
