@@ -5,9 +5,9 @@ public class RegisterIoCDependencyMacroCommand : Hwdtech.ICommand
 {
     public void Execute()
     {
-        IoC.Resolve<ICommand>(
+        IoC.Resolve<Hwdtech.ICommand>(
             "IoC.Register",
             "Commands.Macro",
-            (object[] args) => (ICommand)new MacroCommand(args.Select(x => (ICommand)x).ToArray())).Execute();
+            (object[] args) => (Hwdtech.ICommand)new MacroCommand(args.Select(x => (StarWars.Lib.ICommand)x).ToArray())).Execute();
     }
 }
