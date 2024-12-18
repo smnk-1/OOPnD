@@ -16,7 +16,7 @@ public class RotateCommandIoCTests
         var mockRotate = new Mock<IRotating>();
         var mockGameObject = new Mock<IDictionary<string, object>>();
 
-        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.IRotate",
+        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.IRotatingObject",
             (Func<object, IRotating>)(obj =>
             {
                 return mockRotate.Object;
