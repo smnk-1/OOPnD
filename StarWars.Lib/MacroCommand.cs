@@ -3,7 +3,7 @@
 public class MacroCommand : ICommand
 {
     private readonly ICommand[] cmds;
-    public MacroCommand(ICommand[] commands)
+    public MacroCommand(params ICommand[] commands)
     {
         cmds = commands;
     }
