@@ -8,7 +8,9 @@ public interface ICommandInjectable
 
 public class CommandInjectableCommand : ICommand, ICommandInjectable
 {
-    private ICommand _injectedCommand;
+    private ICommand? _injectedCommand;
+
+    public CommandInjectableCommand() { }
 
     public void Inject(ICommand command)
     {
