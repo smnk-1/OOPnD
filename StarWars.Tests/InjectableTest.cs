@@ -1,30 +1,31 @@
-﻿using Moq;
-using StarWars.Lib;
+﻿using StarWars.Lib;
 
 namespace StarWars.Test;
 
 public class CommandInjectableCommandTests
 {
     [Fact]
-    public void Execute_InjectedCommand_ExecutesInjectedCommand()
+    public void Execute_CallsInjectedCommand()
     {
-
-        var mockCommand = new Mock<ICommand>();
-        mockCommand.Setup(x => x.Execute()).Verifiable();
+        var mockCommand = new MockCommand();
         var commandInjectableCommand = new CommandInjectableCommand();
-        commandInjectableCommand.Inject(mockCommand.Object);
+        commandInjectableCommand.Inject(mockCommand);
 
         commandInjectableCommand.Execute();
 
-        mockCommand.Verify();
+        Assert.True(mockCommand.Executed);
     }
 
     [Fact]
-    public void Execute_NoInjectedCommand_ThrowsException()
+    public void Execute_ThrowsException_IfCommandNotInjected()
     {
         var commandInjectableCommand = new CommandInjectableCommand();
 
         Assert.Throws<InvalidOperationException>(() => commandInjectableCommand.Execute());
     }
+    private class MockCommand : ICommand
+    {
+        public bool Executed { get; private set; } = false;
+        public void Execute() => Executed = true;
+    }
 }
-
