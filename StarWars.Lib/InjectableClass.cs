@@ -5,7 +5,6 @@ public interface ICommandInjectable
     void Inject(ICommand command);
     void Execute();
 }
-
 public class CommandInjectableCommand : ICommand, ICommandInjectable
 {
     private ICommand? _injectedCommand;
@@ -19,7 +18,11 @@ public class CommandInjectableCommand : ICommand, ICommandInjectable
 
     public void Execute()
     {
-        _injectedCommand?.Execute(); 
+        if (_injectedCommand == null)
+        {
+            throw new InvalidOperationException("Command not injected.");
+        }
+
+        _injectedCommand.Execute();
     }
 }
-
