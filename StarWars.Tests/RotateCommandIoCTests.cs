@@ -13,11 +13,11 @@ public class RotateCommandIoCTests
     [Fact]
     public void Execute_ShouldRegisterRotateCommandDependency()
     {
-        var mockRotate = new Mock<IRotate>();
+        var mockRotate = new Mock<IRotating>();
         var mockGameObject = new Mock<IDictionary<string, object>>();
 
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.IRotate",
-            (Func<object, IRotate>)(obj =>
+            (Func<object, IRotating>)(obj =>
             {
                 return mockRotate.Object;
             })).Execute();
