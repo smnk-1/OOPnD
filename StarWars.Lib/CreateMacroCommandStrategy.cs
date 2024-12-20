@@ -12,6 +12,11 @@ public class CreateMacroCommandStrategy
 
     public StarWars.Lib.ICommand Resolve(object[] args)
     {
+        if (args != null && args.Length > 0)
+        {
+            Console.WriteLine($"Received {args.Length} arguments.");
+        }
+
         if (IoC.Resolve<object>("Specs." + commandSpec) is not string[] commandNames)
         {
             throw new InvalidOperationException($"No specification found for command '{commandSpec}'.");
