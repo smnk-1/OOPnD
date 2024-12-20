@@ -10,7 +10,7 @@ public class CreateMacroCommandStrategy
         this.commandSpec = commandSpec;
     }
 
-    public StarWars.Lib.ICommand Resolve()
+    public StarWars.Lib.ICommand Resolve(object[] args)
     {
         if (IoC.Resolve<object>("Specs." + commandSpec) is not string[] commandNames)
         {
