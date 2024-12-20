@@ -1,21 +1,31 @@
 ﻿using Hwdtech;
+using StarWars.Lib;
+using System;
+using System.Linq;
 
-namespace StarWars.Lib
+public class CreateMacroCommandStrategy
 {
-    public class CreateMacroCommandStrategy
+    private readonly string commandSpec;
+
+    public CreateMacroCommandStrategy(string commandSpec)
     {
-        private readonly string cmdSpec;
+        this.commandSpec = commandSpec;
+    }
 
-        public CreateMacroCommandStrategy(string cmdSpec)
+    public StarWars.Lib.ICommand Resolve(object[] args)
+    {
+        if (IoC.Resolve<object>("Specs." + commandSpec) is not string[] commandNames)
         {
-            this.cmdSpec = cmdSpec;
+            throw new InvalidOperationException($"No specification found for command '{commandSpec}'.");
         }
 
-        public ICommand Resolve(object[] args)
+        var commands = commandNames.Select(name => IoC.Resolve<StarWars.Lib.ICommand>(name)).ToArray();
+
+        if (!commands.Any())
         {
-            var cmdsNames = IoC.Resolve<string[]>($"Specs.{cmdSpec}");
-            var cmds = cmdsNames.Select(name => IoC.Resolve<ICommand>(name, args)).ToArray();
-            return IoC.Resolve<ICommand>("Commands.Macro", cmds.Cast<object>().ToArray());
+            throw new InvalidOperationException($"No commands found for macro-command '{commandSpec}'.");
         }
+
+        return new MacroCommand(commands);
     }
 }
