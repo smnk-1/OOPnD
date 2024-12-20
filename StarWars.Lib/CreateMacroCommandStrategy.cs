@@ -1,7 +1,5 @@
 ﻿using Hwdtech;
 using StarWars.Lib;
-using System;
-using System.Linq;
 
 public class CreateMacroCommandStrategy
 {
