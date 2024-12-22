@@ -15,6 +15,9 @@ namespace SpaceBattle.Tests
         [Fact]
         public void Execute_ShouldRegisterMacroCommandDependency()
         {
+            var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
+
             var command_1 = new Mock<StarWars.Lib.ICommand>();
             var command_2 = new Mock<StarWars.Lib.ICommand>();
 
