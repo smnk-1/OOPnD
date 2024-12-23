@@ -69,7 +69,7 @@ namespace StarWars.Tests
         {
             var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
             IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
-            
+
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Specs.Macro.Empty",
