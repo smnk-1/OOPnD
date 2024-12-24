@@ -16,7 +16,7 @@ public class RegisterIoCDependencySendCommandTests
     {
         var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
-        
+
         var mockCommand = new Mock<StarWars.Lib.ICommand>();
         var mockReceiver = new Mock<ICommandReceiver>();
         var mockGameObject = new Mock<IDictionary<string, object>>();

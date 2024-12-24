@@ -4,7 +4,7 @@ namespace StarWars.Lib;
 
 public class RegisterIoCDependencySendCommand : Hwdtech.ICommand
 {
-    
+
     public void Execute()
     {
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Commands.Send",
