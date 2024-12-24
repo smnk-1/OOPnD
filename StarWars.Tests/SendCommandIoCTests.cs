@@ -14,12 +14,12 @@ public class SendCommandIoCTests
     [Fact]
     public void Execute_ShouldRegisterSendCommandDependency()
     {
-        var mockCommand = new Mock<Hwdtech.ICommand>();
+        var mockCommand = new Mock<StarWars.Lib.ICommand>();
         var mockReceiver = new Mock<ICommandReceiver>();
         var mockGameObject = new Mock<IDictionary<string, object>>();
 
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.ICommand",
-            (Func<object, Hwdtech.ICommand>)(obj =>
+            (Func<object, StarWars.Lib.ICommand>)(obj =>
             {
                 return mockCommand.Object;
             })).Execute();
@@ -33,6 +33,7 @@ public class SendCommandIoCTests
         new RegisterIoCDependencySendCommand().Execute();
 
         var sendCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Send", mockGameObject.Object);
+
         Assert.NotNull(sendCommand);
         Assert.IsType<SendCommand>(sendCommand);
     }
