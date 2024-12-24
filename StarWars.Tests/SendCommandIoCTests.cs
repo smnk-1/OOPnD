@@ -4,9 +4,9 @@ using Moq;
 using StarWars.Lib;
 
 namespace StarWars.Test;
-public class SendCommandIoCTests
+public class RegisterIoCDependencySendCommandTests
 {
-    public SendCommandIoCTests()
+    public RegisterIoCDependencySendCommandTests()
     {
         new InitScopeBasedIoCImplementationCommand().Execute();
     }
@@ -14,6 +14,9 @@ public class SendCommandIoCTests
     [Fact]
     public void Execute_ShouldRegisterSendCommandDependency()
     {
+        var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
+        
         var mockCommand = new Mock<StarWars.Lib.ICommand>();
         var mockReceiver = new Mock<ICommandReceiver>();
         var mockGameObject = new Mock<IDictionary<string, object>>();
