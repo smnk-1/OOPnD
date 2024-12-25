@@ -13,13 +13,6 @@ public class SendCommand : ICommand
 
     public void Execute()
     {
-        try
-        {
-            receiver.Receive(cmd);
-        }
-        catch (Exception exception)
-        {
-            throw new InvalidOperationException("Failed to send command", exception);
-        }
+        receiver.Receive(cmd);
     }
 }
