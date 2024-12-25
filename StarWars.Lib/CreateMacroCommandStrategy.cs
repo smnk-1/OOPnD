@@ -12,23 +12,15 @@ public class CreateMacroCommandStrategy
 
     public StarWars.Lib.ICommand Resolve(object[] args)
     {
-        if (args != null && args.Length > 0)
-        {
-            Console.WriteLine($"Received {args.Length} arguments.");
-        }
+        var commandNames = IoC.Resolve<object>("Specs." + commandSpec) as string[]
+            ?? Array.Empty<string>();
 
-        if (IoC.Resolve<object>("Specs." + commandSpec) is not string[] commandNames)
+        if (!commandNames.Any())
         {
-            throw new InvalidOperationException($"No specification found for command '{commandSpec}'.");
+            throw new InvalidOperationException($"No commands specified for macro-command '{commandSpec}'.");
         }
 
         var commands = commandNames.Select(name => IoC.Resolve<StarWars.Lib.ICommand>(name)).ToArray();
-
-        if (!commands.Any())
-        {
-            throw new InvalidOperationException($"No commands found for macro-command '{commandSpec}'.");
-        }
-
         return new MacroCommand(commands);
     }
 }
