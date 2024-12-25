@@ -10,7 +10,7 @@ public class Angle
         Numerator = numerator;
     }
 
-   public int Numerator
+    public int Numerator
     {
         get => _numerator;
         set => _numerator = (value % Denominator + Denominator) % Denominator;
