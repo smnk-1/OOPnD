@@ -39,4 +39,31 @@ public class RegisterIoCDependencyActionsStartTests
         command_1.Verify(c => c.Execute(), Times.Once());
         command_2.Verify(c => c.Execute(), Times.Once());
     }
+
+    [Fact]
+    public void Execute_ShouldThorowInvalidOperationException()
+    {
+
+        var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
+
+        var order = new Dictionary<string, object>{};
+
+        new RegisterIoCDependencyActionsStart().Execute();
+
+        Assert.Throws<InvalidOperationException>(() =>IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order));
+    }
+
+    [Fact]
+    public void Execute_ShouldThrowArgumentException()
+    {
+        var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
+
+        var order = new object[] { "invalid_argument" };
+
+        new RegisterIoCDependencyActionsStart().Execute();
+
+        Assert.Throws<ArgumentException>(() =>IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order));
+    }
 }
