@@ -9,13 +9,15 @@ namespace StarWars.Tests
         public MacroCommandTests()
         {
             new InitScopeBasedIoCImplementationCommand().Execute();
-            var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
-            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
+            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set",
+                IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"))).Execute();
         }
 
         [Fact]
         public void ResolveMacroCommand_Success()
         {
+            var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Specs.Test",
@@ -49,6 +51,8 @@ namespace StarWars.Tests
         [Fact]
         public void ResolveMacroCommand_ThrowsIfNoSpec()
         {
+            var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Specs.Invalid",
@@ -63,6 +67,8 @@ namespace StarWars.Tests
         [Fact]
         public void ResolveMacroCommand_ThrowsIfNoCommands()
         {
+            var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Specs.Empty",
