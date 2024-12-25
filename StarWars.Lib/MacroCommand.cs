@@ -11,7 +11,7 @@ public class MacroCommand : ICommand
 
     public void Execute()
     {
-:       var commandList = cmds.ToList();
+        var commandList = cmds.ToList();
         commandList.ForEach(c => c.Execute());
     }
 }
