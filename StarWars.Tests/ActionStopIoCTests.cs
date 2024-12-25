@@ -26,4 +26,17 @@ public class RegisterIoCDependencyActionsStopTests
 
         stopCommand.Execute();
     }
+
+    [Fact]
+    public void Execute_ShouldThrowArgumentException()
+    {
+        var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
+
+        var order = new object[] { "invalid_argument" };
+
+        new RegisterIoCDependencyActionsStop().Execute();
+
+        Assert.Throws<ArgumentException>(() => IoC.Resolve<Hwdtech.ICommand>("Actions.Stop", order));
+    }
 }
