@@ -19,23 +19,17 @@ public class RegisterIoCDependencySendCommandTests
 
         var mockCommand = new Mock<StarWars.Lib.ICommand>();
         var mockReceiver = new Mock<ICommandReceiver>();
-        var mockGameObject = new Mock<IDictionary<string, object>>();
 
-        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.ICommand",
-            (Func<object, StarWars.Lib.ICommand>)(obj =>
+        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Commands.Send",
+            (Func<object[], object>)(obj =>
             {
-                return mockCommand.Object;
+                return new SendCommand(
+                    (StarWars.Lib.ICommand)obj[0],
+                    (ICommandReceiver)obj[1]
+                );
             })).Execute();
 
-        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.ICommandReceiver",
-            (Func<object, ICommandReceiver>)(obj =>
-            {
-                return mockReceiver.Object;
-            })).Execute();
-
-        new RegisterIoCDependencySendCommand().Execute();
-
-        var sendCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Send", mockGameObject.Object);
+        var sendCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Send",  new object[] {mockCommand.Object, mockReceiver.Object});
 
         Assert.NotNull(sendCommand);
         Assert.IsType<SendCommand>(sendCommand);
