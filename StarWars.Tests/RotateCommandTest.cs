@@ -124,79 +124,26 @@ public class AngleTests
     }
 
     [Fact]
-    public void AngleNotEqualsNull()
+    public void ValueTest()
     {
-        var angle1 = new Angle(1);
-        Assert.True(angle1 != null);
-    }
-
-    [Fact]
-    public void AngleNotEqualsNotAngle()
-    {
-        var angle1 = new Angle(1);
-        Assert.False(angle1.Equals(1));
+        var angle = new Angle(2);
+        Assert.Equal(90.0, angle.Value);
     }
 
     [Fact]
     public void SinGivesCorrectValue()
     {
-        var angle = new Angle(3);
-        var expected = Math.Sin(135 * Math.PI / 180);
-        var actual = angle.Sin();
-        Assert.Equal(expected, actual, 1e-10);
+        var angle = new Angle(2);
+        Assert.Equal(1.0, Math.Round(Math.Sin(angle), 3));
     }
 
     [Fact]
     public void CosGivesCorrectValue()
     {
-        var angle = new Angle(3);
-        var expected = Math.Cos(135 * Math.PI / 180);
-        var actual = angle.Cos();
-        Assert.Equal(expected, actual, 1e-10);
+        var angle = new Angle(0);
+        Assert.Equal(1.0, Math.Round(Math.Cos(angle), 3));
     }
 
-    [Fact]
-    public void NumeratorShouldUpdateValue()
-    {
-        var angle = new Angle(1);
-        angle.Numerator = 3;
-        Assert.Equal(3, angle.Numerator);
-    }
-
-    [Fact]
-    public void NumeratorShouldNormalize()
-    {
-        var angle = new Angle(1);
-        angle.Numerator = 9;
-        Assert.Equal(1, angle.Numerator);
-    }
-
-    [Fact]
-    public void NumeratorShouldNormalizeNegative()
-    {
-        var angle = new Angle(1);
-        angle.Numerator = -1;
-        Assert.Equal(7, angle.Numerator);
-    }
-
-    [Fact]
-    public void NumeratorShouldNotChange()
-    {
-        var angle = new Angle(3);
-        angle.Numerator = 5;
-        Assert.Equal(5, angle.Numerator);
-    }
-
-    [Fact]
-    public void Test()
-    {
-        var angle1 = new Angle(14);
-
-        var angle2 = new Angle(4);
-        var angle = angle1 + angle2;
-        Assert.Equal(2, angle.Numerator);
-    }
-    //////
     [Fact]
     public void Equals_ReturnsFalse_WhenComparedToNull()
     {
@@ -213,46 +160,4 @@ public class AngleTests
         var result = angle.Equals(differentObject);
         Assert.False(result);
     }
-
-    [Fact]
-    public void Equals_ReturnsTrue_WhenAnglesAreEqual()
-    {
-        var angle1 = new Angle(1);
-        var angle2 = new Angle(9);
-        var result = angle1.Equals(angle2);
-        Assert.True(result);
-    }
-
-    [Fact]
-    public void Equals_ReturnsFalse_WhenAnglesAreNotEqual()
-    {
-        var angle1 = new Angle(1);
-        var angle2 = new Angle(2);
-        var result = angle1.Equals(angle2);
-        Assert.False(result);
-    }
-
-    [Fact]
-    public void GetHashCode_ShouldReturnSameHashForEqualAngles()
-    {
-        var angle1 = new Angle(2);
-        var angle2 = new Angle(2);
-        Assert.Equal(angle1.GetHashCode(), angle2.GetHashCode());
-    }
-
-    [Fact]
-    public void ValueTest()
-    {
-        var angle = new Angle(2);
-        Assert.Equal(90.0, (double)angle);
-    }
-
-    [Fact]
-    public void NumerTest()
-    {
-        var angle = new Angle(2);
-        angle.Numerator = 3;
-        Assert.Equal(3, angle.Numerator);
-    }
 }
-

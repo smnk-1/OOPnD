@@ -15,10 +15,11 @@ public class Angle
         get => _numerator;
         set => _numerator = (value % Denominator + Denominator) % Denominator;
     }
+    public int Value => (int)((double)_numerator / Denominator * 360);
 
     public static implicit operator double(Angle angle)
     {
-        return (double)angle._numerator / Denominator * 360;
+        return ((double)angle._numerator / Denominator) * 2 * Math.PI;
     }
 
     public static Angle operator +(Angle a1, Angle a2)
@@ -44,16 +45,6 @@ public class Angle
     public override int GetHashCode()
     {
         return _numerator.GetHashCode();
-    }
-
-    public double Sin()
-    {
-        return Math.Sin((double)Numerator / Denominator * 2 * Math.PI);
-    }
-
-    public double Cos()
-    {
-        return Math.Cos((double)Numerator / Denominator * 2 * Math.PI);
     }
 }
 
