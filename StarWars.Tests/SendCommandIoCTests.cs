@@ -29,7 +29,7 @@ public class RegisterIoCDependencySendCommandTests
                 );
             })).Execute();
 
-        var sendCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Send",  new object[] {mockCommand.Object, mockReceiver.Object});
+        var sendCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Send", new object[] { mockCommand.Object, mockReceiver.Object });
 
         Assert.NotNull(sendCommand);
         Assert.IsType<SendCommand>(sendCommand);
