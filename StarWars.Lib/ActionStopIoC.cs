@@ -2,7 +2,7 @@
 
 namespace StarWars.Lib;
 
-public class RegisterIoCDependencyActionsStop : ICommand
+public class RegisterIoCDependencyActionsStop : Hwdtech.ICommand
 {
     public void Execute()
     {
@@ -16,7 +16,7 @@ public class RegisterIoCDependencyActionsStop : ICommand
                     throw new ArgumentException("Invalid arguments for Actions.Stop");
                 }
 
-                return new MacroCommand(Array.Empty<StarWars.Lib.ICommand>());
+                return new MacroCommand(Array.Empty<Hwdtech.ICommand>());
             }
         ).Execute();
     }

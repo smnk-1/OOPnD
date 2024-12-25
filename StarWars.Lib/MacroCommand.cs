@@ -1,10 +1,10 @@
 ﻿namespace StarWars.Lib;
 
-public class MacroCommand : ICommand
+public class MacroCommand : Hwdtech.ICommand
 {
-    private readonly IEnumerable<ICommand> cmds;
+    private readonly IEnumerable<Hwdtech.ICommand> cmds;
 
-    public MacroCommand(IEnumerable<ICommand> commands)
+    public MacroCommand(IEnumerable<Hwdtech.ICommand> commands)
     {
         cmds = commands;
     }

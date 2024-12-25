@@ -25,13 +25,13 @@ namespace StarWars.Tests
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Command1",
-                (Func<object[], object>)((args) => new Mock<StarWars.Lib.ICommand>().Object)
+                (Func<object[], object>)((args) => new Mock<Hwdtech.ICommand>().Object)
             ).Execute();
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Command2",
-                (Func<object[], object>)((args) => new Mock<StarWars.Lib.ICommand>().Object)
+                (Func<object[], object>)((args) => new Mock<Hwdtech.ICommand>().Object)
             ).Execute();
 
             var strategy = new CreateMacroCommandStrategy("Test");
@@ -39,8 +39,8 @@ namespace StarWars.Tests
             var macroCommand = strategy.Resolve(Array.Empty<object>());
             macroCommand.Execute();
 
-            var command1Mock = IoC.Resolve<StarWars.Lib.ICommand>("Command1") as Mock<StarWars.Lib.ICommand>;
-            var command2Mock = IoC.Resolve<StarWars.Lib.ICommand>("Command2") as Mock<StarWars.Lib.ICommand>;
+            var command1Mock = IoC.Resolve<Hwdtech.ICommand>("Command1") as Mock<Hwdtech.ICommand>;
+            var command2Mock = IoC.Resolve<Hwdtech.ICommand>("Command2") as Mock<Hwdtech.ICommand>;
 
             command1Mock?.Verify(m => m.Execute(), Times.Once());
             command2Mock?.Verify(m => m.Execute(), Times.Once());

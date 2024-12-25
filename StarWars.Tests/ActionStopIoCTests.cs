@@ -19,7 +19,7 @@ public class RegisterIoCDependencyActionsStopTests
 
         new RegisterIoCDependencyActionsStop().Execute();
 
-        var stopCommand = IoC.Resolve<StarWars.Lib.ICommand>("Actions.Stop", order);
+        var stopCommand = IoC.Resolve<Hwdtech.ICommand>("Actions.Stop", order);
 
         Assert.NotNull(stopCommand);
         Assert.IsType<MacroCommand>(stopCommand);

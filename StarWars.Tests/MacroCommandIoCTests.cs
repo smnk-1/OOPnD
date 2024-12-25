@@ -18,14 +18,14 @@ namespace SpaceBattle.Tests
             var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
             IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
 
-            var command_1 = new Mock<StarWars.Lib.ICommand>();
-            var command_2 = new Mock<StarWars.Lib.ICommand>();
+            var command_1 = new Mock<Hwdtech.ICommand>();
+            var command_2 = new Mock<Hwdtech.ICommand>();
 
             new RegisterIoCDependencyMacroCommand().Execute();
 
-            StarWars.Lib.ICommand[] commandArray = { command_1.Object, command_2.Object };
+            Hwdtech.ICommand[] commandArray = { command_1.Object, command_2.Object };
 
-            var macroCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Macro", commandArray);
+            var macroCommand = IoC.Resolve<Hwdtech.ICommand>("Commands.Macro", commandArray);
             macroCommand.Execute();
 
             command_1.Verify(m => m.Execute(), Times.Once());

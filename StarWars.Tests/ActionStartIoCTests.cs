@@ -17,8 +17,8 @@ public class RegisterIoCDependencyActionsStartTests
         var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
 
-        var command_1 = new Mock<StarWars.Lib.ICommand>();
-        var command_2 = new Mock<StarWars.Lib.ICommand>();
+        var command_1 = new Mock<Hwdtech.ICommand>();
+        var command_2 = new Mock<Hwdtech.ICommand>();
 
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Command1", (object[] args) => command_1.Object).Execute();
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Command2", (object[] args) => command_2.Object).Execute();
@@ -30,7 +30,7 @@ public class RegisterIoCDependencyActionsStartTests
 
         new RegisterIoCDependencyActionsStart().Execute();
 
-        var macroCommand = IoC.Resolve<StarWars.Lib.ICommand>("Actions.Start", order);
+        var macroCommand = IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order);
 
         Assert.NotNull(macroCommand);
         Assert.IsType<MacroCommand>(macroCommand);

@@ -10,7 +10,7 @@ public class CreateMacroCommandStrategy
         this.commandSpec = commandSpec;
     }
 
-    public StarWars.Lib.ICommand Resolve(object[] args)
+    public Hwdtech.ICommand Resolve(object[] args)
     {
         var commandNames = IoC.Resolve<object>("Specs." + commandSpec) as string[]
             ?? Array.Empty<string>();
@@ -20,7 +20,7 @@ public class CreateMacroCommandStrategy
             throw new InvalidOperationException($"No commands specified for macro-command '{commandSpec}'.");
         }
 
-        var commands = commandNames.Select(name => IoC.Resolve<StarWars.Lib.ICommand>(name)).ToArray();
+        var commands = commandNames.Select(name => IoC.Resolve<Hwdtech.ICommand>(name)).ToArray();
         return new MacroCommand(commands);
     }
 }

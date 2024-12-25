@@ -23,14 +23,14 @@ namespace SpaceBattle.Tests
 
             var moveCommandMocks = moveSpec.Select(cmd =>
             {
-                var mock = new Mock<StarWars.Lib.ICommand>();
+                var mock = new Mock<Hwdtech.ICommand>();
                 IoC.Resolve<Hwdtech.ICommand>("IoC.Register", cmd, (object[] args) => mock.Object).Execute();
                 return mock;
             }).ToArray();
 
             var rotateCommandMocks = rotateSpec.Select(cmd =>
             {
-                var mock = new Mock<StarWars.Lib.ICommand>();
+                var mock = new Mock<Hwdtech.ICommand>();
                 IoC.Resolve<Hwdtech.ICommand>("IoC.Register", cmd, (object[] args) => mock.Object).Execute();
                 return mock;
             }).ToArray();
@@ -40,14 +40,14 @@ namespace SpaceBattle.Tests
 
             new RegisterIoCDependencyMacroMoveRotate().Execute();
 
-            var moveMacro = IoC.Resolve<StarWars.Lib.ICommand>("Macro.Move");
+            var moveMacro = IoC.Resolve<Hwdtech.ICommand>("Macro.Move");
             moveMacro.Execute();
             foreach (var mock in moveCommandMocks)
             {
                 mock.Verify(cmd => cmd.Execute(), Times.Once());
             }
 
-            var rotateMacro = IoC.Resolve<StarWars.Lib.ICommand>("Macro.Rotate");
+            var rotateMacro = IoC.Resolve<Hwdtech.ICommand>("Macro.Rotate");
             rotateMacro.Execute();
             foreach (var mock in rotateCommandMocks)
             {

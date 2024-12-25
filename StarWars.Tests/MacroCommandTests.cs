@@ -8,13 +8,13 @@ namespace StarWars.Test
         [Fact]
         public void StopOnException()
         {
-            var command_1 = new Mock<ICommand>();
-            var command_2 = new Mock<ICommand>();
-            var command_3 = new Mock<ICommand>();
+            var command_1 = new Mock<Hwdtech.ICommand>();
+            var command_2 = new Mock<Hwdtech.ICommand>();
+            var command_3 = new Mock<Hwdtech.ICommand>();
 
             command_2.Setup(m => m.Execute()).Throws<Exception>();
 
-            var commands = new List<ICommand> { command_1.Object, command_2.Object, command_3.Object };
+            var commands = new List<Hwdtech.ICommand> { command_1.Object, command_2.Object, command_3.Object };
             var macroCommand = new MacroCommand(commands);
 
             Assert.Throws<Exception>(() => macroCommand.Execute());

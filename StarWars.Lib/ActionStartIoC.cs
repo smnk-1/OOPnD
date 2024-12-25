@@ -2,7 +2,7 @@
 
 namespace StarWars.Lib;
 
-public class RegisterIoCDependencyActionsStart : ICommand
+public class RegisterIoCDependencyActionsStart : Hwdtech.ICommand
 {
     public void Execute()
     {
@@ -18,7 +18,7 @@ public class RegisterIoCDependencyActionsStart : ICommand
                 : throw new InvalidOperationException("Order must contain a 'Commands' key with a list of command names.");
 
             var commandsArray = commandNames
-                .Select(name => IoC.Resolve<StarWars.Lib.ICommand>(name))
+                .Select(name => IoC.Resolve<Hwdtech.ICommand>(name))
                 .ToArray();
 
             return new MacroCommand(commandsArray);
