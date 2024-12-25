@@ -7,32 +7,18 @@ public class Angle
 
     public Angle(int numerator)
     {
-        _numerator = numerator;
-        Normalize();
+        Numerator = numerator;
     }
 
-    public int Numerator
+   public int Numerator
     {
         get => _numerator;
-        set
-        {
-            _numerator = value;
-            Normalize();
-        }//
+        set => _numerator = (value % Denominator + Denominator) % Denominator;
     }
 
-    public int Value => (int)((double)_numerator / Denominator * 360);
-
-    private void Normalize()
+    public static implicit operator double(Angle angle)
     {
-        if (_numerator >= Denominator)
-        {
-            _numerator = _numerator % Denominator;
-        }
-        else if (_numerator < 0)
-        {
-            _numerator = (Denominator + _numerator % Denominator) % Denominator;
-        }
+        return (double)angle._numerator / Denominator * 360;
     }
 
     public static Angle operator +(Angle a1, Angle a2)
@@ -62,13 +48,12 @@ public class Angle
 
     public double Sin()
     {
-        return Math.Sin(Value * Math.PI / 180);
+        return Math.Sin((double)Numerator / Denominator * 2 * Math.PI);
     }
 
     public double Cos()
     {
-
-        return Math.Cos(Value * Math.PI / 180);
+        return Math.Cos((double)Numerator / Denominator * 2 * Math.PI);
     }
 }
 

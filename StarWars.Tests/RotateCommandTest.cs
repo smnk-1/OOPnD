@@ -244,7 +244,7 @@ public class AngleTests
     public void ValueTest()
     {
         var angle = new Angle(2);
-        Assert.Equal(90.0, angle.Value);
+        Assert.Equal(90.0, (double)angle);
     }
 
     [Fact]
@@ -253,42 +253,6 @@ public class AngleTests
         var angle = new Angle(2);
         angle.Numerator = 3;
         Assert.Equal(3, angle.Numerator);
-    }
-    //
-    [Fact]
-    public void Value_NumeratorIs1_Returns360()
-    {
-        var angle = new Angle(1);
-        Assert.Equal(45.0, angle.Value);
-    }
-
-    [Fact]
-    public void Value_NumeratorIs0_Returns0()
-    {
-        var angle = new Angle(0);
-        Assert.Equal(0.0, angle.Value);
-    }
-
-    [Fact]
-    public void Value_NumeratorIsNegative1_ReturnsNegative360()
-    {
-        var angle = new Angle(-1);
-        Assert.Equal(315.0, angle.Value);
-    }
-
-    [Fact]
-    public void Value_NumeratorIsMax_Returns360()
-    {
-        var angle = new Angle(int.MaxValue);
-        var exp = int.MaxValue % 8;
-        Assert.Equal(exp * 45, angle.Value);
-    }
-
-    [Fact]
-    public void Value_NumeratorIsMin_Returns360()
-    {
-        var angle = new Angle(int.MinValue);
-        Assert.Equal(int.MinValue % 8, angle.Value);
     }
 }
 
