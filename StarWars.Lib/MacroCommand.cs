@@ -2,8 +2,9 @@
 
 public class MacroCommand : ICommand
 {
-    private readonly ICommand[] cmds;
-    public MacroCommand(params ICommand[] commands)
+    private readonly IEnumerable<ICommand> cmds;
+
+    public MacroCommand(IEnumerable<ICommand> commands)
     {
         cmds = commands;
     }

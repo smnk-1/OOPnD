@@ -14,9 +14,11 @@ namespace StarWars.Test
 
             command_2.Setup(m => m.Execute()).Throws<Exception>();
 
-            var macroCommand = new MacroCommand(command_1.Object, command_2.Object, command_3.Object);
+            var commands = new List<ICommand> { command_1.Object, command_2.Object, command_3.Object };
+            var macroCommand = new MacroCommand(commands);
 
             Assert.Throws<Exception>(() => macroCommand.Execute());
+
             command_1.Verify(m => m.Execute(), Times.Once());
             command_2.Verify(m => m.Execute(), Times.Once());
             command_3.Verify(m => m.Execute(), Times.Never());
