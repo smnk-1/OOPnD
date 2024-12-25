@@ -3,7 +3,6 @@
 public interface ICommandInjectable
 {
     void Inject(ICommand command);
-    void Execute();
 }
 public class CommandInjectableCommand : ICommand, ICommandInjectable
 {
