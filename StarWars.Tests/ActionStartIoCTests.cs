@@ -47,11 +47,11 @@ public class RegisterIoCDependencyActionsStartTests
         var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
 
-        var order = new Dictionary<string, object>{};
+        var order = new Dictionary<string, object> { };
 
         new RegisterIoCDependencyActionsStart().Execute();
 
-        Assert.Throws<InvalidOperationException>(() =>IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order));
+        Assert.Throws<InvalidOperationException>(() => IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order));
     }
 
     [Fact]
@@ -64,6 +64,6 @@ public class RegisterIoCDependencyActionsStartTests
 
         new RegisterIoCDependencyActionsStart().Execute();
 
-        Assert.Throws<ArgumentException>(() =>IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order));
+        Assert.Throws<ArgumentException>(() => IoC.Resolve<Hwdtech.ICommand>("Actions.Start", order));
     }
 }
