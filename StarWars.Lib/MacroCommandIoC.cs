@@ -9,11 +9,7 @@ namespace StarWars.Lib
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Commands.Macro",
-                new Func<object[], MacroCommand>(args =>
-                {
-                    var commands = args.OfType<Hwdtech.ICommand>().ToArray();
-                    return new MacroCommand(commands);
-                })
+                (object[] args) => new MacroCommand(args.OfType<Hwdtech.ICommand>().ToArray())
             ).Execute();
         }
     }
