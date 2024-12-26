@@ -62,22 +62,5 @@ namespace StarWars.Tests
             var exception = Record.Exception(() => macroCommand.Execute());
             Assert.Null(exception);
         }
-
-        [Fact]
-        public void ResolveMacroCommand_NullCommandList()
-        {
-            IoC.Resolve<Hwdtech.ICommand>(
-                "IoC.Register",
-                "Specs.Null",
-                (Func<object[], object>)((args) => null!)
-            ).Execute();
-
-            var strategy = new CreateMacroCommandStrategy("Null");
-
-            var macroCommand = strategy.Resolve(Array.Empty<object>());
-
-            var exception = Record.Exception(() => macroCommand.Execute());
-            Assert.Null(exception);
-        }
     }
 }

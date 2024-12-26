@@ -12,11 +12,10 @@ public class CreateMacroCommandStrategy
 
     public Hwdtech.ICommand Resolve(object[] args)
     {
-        var commandNames = IoC.Resolve<IEnumerable<string>>("Specs." + commandSpec)
-                            ?? Enumerable.Empty<string>();
+        var commandNames = IoC.Resolve<IEnumerable<string>>("Specs." + commandSpec);
 
         var commands = commandNames.Select(name => IoC.Resolve<Hwdtech.ICommand>(name, args)).ToArray();
 
-        return IoC.Resolve<Hwdtech.ICommand>("Commands.Macro", commands.Cast<object>().ToArray());
+        return new MacroCommand(commands);
     }
 }
