@@ -11,8 +11,7 @@ namespace StarWars.Lib
                 "Commands.Macro",
                 new Func<object[], MacroCommand>(args =>
                 {
-                    var commands = args.OfType<Hwdtech.ICommand>().ToArray();
-                    return new MacroCommand(commands);
+                    return new MacroCommand((Hwdtech.ICommand[])args);
                 })
             ).Execute();
         }
