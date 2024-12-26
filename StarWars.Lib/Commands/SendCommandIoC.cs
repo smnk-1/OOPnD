@@ -10,7 +10,7 @@ public class RegisterIoCDependencySendCommand : Hwdtech.ICommand
         IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Commands.Send",
             (Func<object[], object>)(obj =>
                 new SendCommand(
-                    (ICommand)obj[0],
+                    (Hwdtech.ICommand)obj[0],
                     (ICommandReceiver)obj[1]
                 )
             )).Execute();
