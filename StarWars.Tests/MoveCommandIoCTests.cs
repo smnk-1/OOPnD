@@ -8,6 +8,8 @@ public class MoveCommandIoCTests
     public MoveCommandIoCTests()
     {
         new InitScopeBasedIoCImplementationCommand().Execute();
+        var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
     }
 
     [Fact]

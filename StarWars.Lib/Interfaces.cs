@@ -7,5 +7,5 @@ public interface ICommand
 
 public interface ICommandReceiver
 {
-    void Receive(ICommand cmd);
+    void Receive(Hwdtech.ICommand cmd);
 }

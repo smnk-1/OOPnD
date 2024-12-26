@@ -1,11 +1,11 @@
 ﻿namespace StarWars.Lib;
 
-public class SendCommand : ICommand
+public class SendCommand : Hwdtech.ICommand
 {
-    private readonly ICommand cmd;
+    private readonly Hwdtech.ICommand cmd;
     private readonly ICommandReceiver receiver;
 
-    public SendCommand(ICommand cmd, ICommandReceiver receiver)
+    public SendCommand(Hwdtech.ICommand cmd, ICommandReceiver receiver)
     {
         this.cmd = cmd;
         this.receiver = receiver;
