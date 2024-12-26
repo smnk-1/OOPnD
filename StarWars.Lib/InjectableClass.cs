@@ -6,7 +6,7 @@ public interface ICommandInjectable
 }
 public class CommandInjectableCommand : Hwdtech.ICommand, ICommandInjectable
 {
-    private Hwdtech.ICommand? _injectedCommand;
+    public Hwdtech.ICommand? _injectedCommand;
 
     public CommandInjectableCommand() { }
 
