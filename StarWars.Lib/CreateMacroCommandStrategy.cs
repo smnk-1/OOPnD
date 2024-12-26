@@ -7,7 +7,7 @@ public class CreateMacroCommandStrategy
 
     public CreateMacroCommandStrategy(string commandSpec)
     {
-        this.commandSpec = commandSpec ?? throw new ArgumentNullException(nameof(commandSpec));
+        this.commandSpec = commandSpec;
     }
 
     public Hwdtech.ICommand Resolve(object[] args)
