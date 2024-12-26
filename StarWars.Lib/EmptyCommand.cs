@@ -1,6 +1,6 @@
-namespace StarWars.Lib;
+﻿namespace StarWars.Lib;
 
-public class EmptyCommand:Hwdtech.ICommand
+public class EmptyCommand : Hwdtech.ICommand
 {
-    public void Execute(){}
+    public void Execute() { }
 }
