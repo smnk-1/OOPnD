@@ -17,12 +17,12 @@ public class RegisterIoCDependencySendCommandTests
         var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
 
-        var mockCommand = new Mock<Lib.ICommand>();
+        var mockCommand = new Mock<Hwdtech.ICommand>();
         var mockReceiver = new Mock<ICommandReceiver>();
 
         new RegisterIoCDependencySendCommand().Execute();
 
-        var sendCommand = IoC.Resolve<StarWars.Lib.ICommand>("Commands.Send", new object[] { mockCommand.Object, mockReceiver.Object });
+        var sendCommand = IoC.Resolve<Hwdtech.ICommand>("Commands.Send", new object[] { mockCommand.Object, mockReceiver.Object });
 
         Assert.NotNull(sendCommand);
         Assert.IsType<SendCommand>(sendCommand);
