@@ -1,23 +1,17 @@
-using Hwdtech;
+namespace StarWars.Lib;
 
-namespace StarWars.Lib
+public class StopCommand : Hwdtech.ICommand
 {
-    public class StopCommand : Hwdtech.ICommand
+    private readonly IDictionary<string, object> _gameObject;
+    private readonly string _cmdType;
+    public StopCommand(IDictionary<string, object> gameObject, string commandType)
     {
-        private readonly string _objId;
-        private readonly string _cmdName;
-        public StopCommand(string objId, string cmdName)
-        {
-            _cmdName = cmdName;
-            _objId = objId;
-
-        }
-
-        public void Execute()
-        {
-            IoC.Resolve<ICommandInjectable>("Game.Object.GetInjectable", _objId, _cmdName)
-                .Inject(IoC.Resolve<ICommand>("Commands.Empty"));
-
-        }
+        _gameObject = gameObject;
+        _cmdType = commandType;
+    }
+    public void Execute()
+    {
+        var injectable = (CommandInjectableCommand)_gameObject[$"repeatable{_cmdType}"];
+        injectable.Inject(new EmptyCommand());
     }
 }
