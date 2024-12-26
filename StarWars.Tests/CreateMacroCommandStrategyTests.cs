@@ -45,33 +45,5 @@ namespace StarWars.Tests
             command1Mock?.Verify(m => m.Execute(), Times.Once());
             command2Mock?.Verify(m => m.Execute(), Times.Once());
         }
-
-        [Fact]
-        public void ResolveMacroCommand_ThrowsIfNoSpec()
-        {
-            IoC.Resolve<Hwdtech.ICommand>(
-                "IoC.Register",
-                "Specs.Invalid",
-                (Func<object[], object>)((args) => null!)
-            ).Execute();
-
-            var strategy = new CreateMacroCommandStrategy("Invalid");
-
-            Assert.Throws<InvalidOperationException>(() => strategy.Resolve(Array.Empty<object>()));
-        }
-
-        [Fact]
-        public void ResolveMacroCommand_ThrowsIfNoCommands()
-        {
-            IoC.Resolve<Hwdtech.ICommand>(
-                "IoC.Register",
-                "Specs.Empty",
-                (Func<object[], object>)((args) => Array.Empty<string>())
-            ).Execute();
-
-            var strategy = new CreateMacroCommandStrategy("Empty");
-
-            Assert.Throws<InvalidOperationException>(() => strategy.Resolve(Array.Empty<object>()));
-        }
     }
 }

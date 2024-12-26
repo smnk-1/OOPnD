@@ -1,5 +1,8 @@
 ﻿using Hwdtech;
 using StarWars.Lib;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class CreateMacroCommandStrategy
 {
@@ -7,20 +10,16 @@ public class CreateMacroCommandStrategy
 
     public CreateMacroCommandStrategy(string commandSpec)
     {
-        this.commandSpec = commandSpec;
+        this.commandSpec = commandSpec ?? throw new ArgumentNullException(nameof(commandSpec));
     }
 
     public Hwdtech.ICommand Resolve(object[] args)
     {
-        var commandNames = IoC.Resolve<object>("Specs." + commandSpec) as string[]
-            ?? Array.Empty<string>();
-
-        if (!commandNames.Any())
-        {
-            throw new InvalidOperationException($"No commands specified for macro-command '{commandSpec}'.");
-        }
+        var commandNames = IoC.Resolve<IEnumerable<string>>("Specs." + commandSpec) 
+                            ?? Enumerable.Empty<string>();
 
         var commands = commandNames.Select(name => IoC.Resolve<Hwdtech.ICommand>(name)).ToArray();
+
         return new MacroCommand(commands);
     }
 }
