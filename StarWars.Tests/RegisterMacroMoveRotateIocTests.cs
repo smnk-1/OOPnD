@@ -17,9 +17,6 @@ namespace SpaceBattle.Tests
         [Fact]
         public void Execute_ShouldRegisterMacroMoveAndRotate()
         {
-            var iocScope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
-            IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", iocScope).Execute();
-
             var moveSpec = new[] { "MoveCommand1", "MoveCommand2" };
             var rotateSpec = new[] { "RotateCommand1", "RotateCommand2" };
 
