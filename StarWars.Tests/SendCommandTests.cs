@@ -8,7 +8,7 @@ public class SendCommandTests
     [Fact]
     public void SendCommand_Execute_Test()
     {
-        var cmd = new Mock<ICommand>().Object;
+        var cmd = new Mock<Hwdtech.ICommand>().Object;
         var mockReceiver = new Mock<ICommandReceiver>();
         var sendCommand = new SendCommand(cmd, mockReceiver.Object);
 
@@ -19,7 +19,7 @@ public class SendCommandTests
     [Fact]
     public void SendCommand_Receiver_Fails_Test()
     {
-        var cmd = new Mock<ICommand>().Object;
+        var cmd = new Mock<Hwdtech.ICommand>().Object;
         var mockReceiver = new Mock<ICommandReceiver>();
         var sendCommand = new SendCommand(cmd, mockReceiver.Object);
 

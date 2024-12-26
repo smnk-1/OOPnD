@@ -9,7 +9,7 @@ namespace StarWars.Tests
         public void Execute_InjectedCommand_ExecutesInjectedCommand()
         {
 
-            var mockCommand = new Mock<ICommand>();
+            var mockCommand = new Mock<Hwdtech.ICommand>();
             mockCommand.Setup(x => x.Execute()).Verifiable();
             var commandInjectableCommand = new CommandInjectableCommand();
             commandInjectableCommand.Inject(mockCommand.Object);
@@ -28,4 +28,3 @@ namespace StarWars.Tests
         }
     }
 }
-

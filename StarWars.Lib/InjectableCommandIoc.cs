@@ -2,7 +2,7 @@
 
 namespace StarWars.Lib
 {
-    public class RegisterDependencyCommandInjectableCommand : ICommand
+    public class RegisterDependencyCommandInjectableCommand : Hwdtech.ICommand
     {
         public void Execute()
         {

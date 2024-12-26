@@ -18,7 +18,7 @@ public class RegisterDependencyCommandInjectableCommandTests
         new InitScopeBasedIoCImplementationCommand().Execute();
         new RegisterDependencyCommandInjectableCommand().Execute();
 
-        var command = IoC.Resolve<StarWars.Lib.ICommand>("Commands.CommandInjectable");
+        var command = IoC.Resolve<Hwdtech.ICommand>("Commands.CommandInjectable");
         Assert.NotNull(command);
         Assert.IsType<CommandInjectableCommand>(command);
 

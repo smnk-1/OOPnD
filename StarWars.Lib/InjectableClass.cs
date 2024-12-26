@@ -2,15 +2,15 @@
 
 public interface ICommandInjectable
 {
-    void Inject(ICommand command);
+    void Inject(Hwdtech.ICommand command);
 }
-public class CommandInjectableCommand : ICommand, ICommandInjectable
+public class CommandInjectableCommand : Hwdtech.ICommand, ICommandInjectable
 {
-    private ICommand? _injectedCommand;
+    public Hwdtech.ICommand? _injectedCommand;
 
     public CommandInjectableCommand() { }
 
-    public void Inject(ICommand command)
+    public void Inject(Hwdtech.ICommand command)
     {
         _injectedCommand = command;
     }
