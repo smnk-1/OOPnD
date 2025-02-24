@@ -1,10 +1,11 @@
-using Hwdtech;
+﻿using Hwdtech;
 using Hwdtech.Ioc;
 using StarWars.Lib;
 
 namespace StarWars.Tests;
 
-public class GameItemRepositoryTests{
+public class GameItemRepositoryTests
+{
     public GameItemRepositoryTests()
     {
         new InitScopeBasedIoCImplementationCommand().Execute();
@@ -16,7 +17,8 @@ public class GameItemRepositoryTests{
     }
 
     [Fact]
-    public void GameRepositoryTests(){
+    public void GameRepositoryTests()
+    {
         var GameObject = new Dictionary<string, object>(){
             {"key", "value"}
         };

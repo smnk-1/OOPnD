@@ -1,21 +1,21 @@
-using Hwdtech;
+﻿using Hwdtech;
 
 namespace StarWars.Lib;
 
-public class RegisterDependenciesGameItem: Hwdtech.ICommand
+public class RegisterDependenciesGameItem : Hwdtech.ICommand
 {
     public void Execute()
     {
         var gameItems = new Dictionary<string, IDictionary<string, object>>();
 
         IoC.Resolve<Hwdtech.ICommand>(
-            "IoC.Register", 
-            "GameItem", 
+            "IoC.Register",
+            "GameItem",
             (object[] args) => gameItems[(string)args[0]]
         ).Execute();
 
         IoC.Resolve<Hwdtech.ICommand>(
-            "IoC.Register", 
+            "IoC.Register",
             "GameItem.Add",
             (Func<object[], object>)(args =>
             {
@@ -25,7 +25,7 @@ public class RegisterDependenciesGameItem: Hwdtech.ICommand
         ).Execute();
 
         IoC.Resolve<Hwdtech.ICommand>(
-            "IoC.Register", 
+            "IoC.Register",
             "GameItem.Remove",
             (Func<object[], object>)(args =>
             {
@@ -33,7 +33,6 @@ public class RegisterDependenciesGameItem: Hwdtech.ICommand
                 return null;
             })
         ).Execute();
-
 
     }
 }
