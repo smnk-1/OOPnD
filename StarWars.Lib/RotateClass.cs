@@ -1,35 +1,57 @@
 ﻿namespace StarWars.Lib;
 
-public class Degree
+public class Angle
 {
-    private int _value;
+    private int _numerator;
+    private const int Denominator = 8;
 
-    public Degree(int value)
+    public Angle(int numerator)
     {
-        Value = value;
+        Numerator = numerator;
     }
 
-    public int Value
+    public int Numerator
     {
-        get => _value;
-        set => _value = Normalize(value);
+        get => _numerator;
+        set => _numerator = (value % Denominator + Denominator) % Denominator;
+    }
+    public int Value => (int)((double)_numerator / Denominator * 360);
+
+    public static implicit operator double(Angle angle)
+    {
+        return ((double)angle._numerator / Denominator) * 2 * Math.PI;
     }
 
-    private static int Normalize(int value)
+    public static Angle operator +(Angle a1, Angle a2)
     {
-        return (value % 360 + 360) % 360;
+        return new Angle(a1.Numerator + a2.Numerator);
     }
 
-    public static Degree operator +(Degree d1, Degree d2)
+    public override bool Equals(object? obj)
     {
-        return new Degree(d1.Value + d2.Value);
+        if (obj is null)
+        {
+            return false;
+        }
+
+        if (obj is Angle otherAngle)
+        {
+            return Numerator == otherAngle.Numerator;
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return _numerator.GetHashCode();
     }
 }
 
 public interface IRotating
 {
-    Degree Angle { get; set; }
-    Degree RotateVelocity { get; }
+    Angle Angle { get; set; }
+    Angle RotateVelocity { get; }
 }
 
 public class RotateCommand : ICommand
@@ -46,4 +68,3 @@ public class RotateCommand : ICommand
         obj.Angle = obj.Angle + obj.RotateVelocity;
     }
 }
-
