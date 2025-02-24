@@ -12,7 +12,7 @@ public interface ICommandReceiver
 
 public interface IRepository
 {
-    object GetItem(object id);
-    void AddItem(object id, object GameItem);
+    IDictionary<string, object> GetItem(object id);
+    void AddItem(object id, IDictionary<string, object> GameItem);
     void RemoveItem(object id);
 }
