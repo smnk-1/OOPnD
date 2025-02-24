@@ -2,6 +2,7 @@
 
 public class MacroCommand : Hwdtech.ICommand
 {
+
     public readonly IEnumerable<Hwdtech.ICommand> cmds;
 
     public MacroCommand(IEnumerable<Hwdtech.ICommand> commands)
