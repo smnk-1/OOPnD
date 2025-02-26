@@ -1,6 +1,11 @@
-﻿public class Game : ICommand
+﻿using Hwdtech;
+using Hwdtech.Ioc;
+namespace StarWars.Lib;
+
+public class Game : Hwdtech.ICommand
 {
     private readonly object _scope;
+    public bool stop;
 
     public Game(object scope)
     {
@@ -9,26 +14,21 @@
 
     public void Execute()
     {
-        IoC.Resolve<ICommand>("Scopes.Current.Set", _scope).Execute();
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
 
-        var queue = IoC.Resolve<IQueue>("Game.Queue");
+        var queue = IoC.Resolve<ICommandReceiver>("Game.Queue");
 
-        while (!ShouldStop(queue))
+        while (!stop)
         {
-            var cmd = IoC.Resolve<ICommand>("Game.Scheduler.NextCommand");
+            var cmd = IoC.Resolve<Hwdtech.ICommand>("Game.Scheduler.NextCommand");
             try
             {
                 cmd.Execute();
             }
             catch (Exception e)
             {
-                IoC.Resolve<ICommand>("ExceptionHandler", cmd, e).Execute();
+                IoC.Resolve<Hwdtech.ICommand>("ExceptionHandler", cmd, e).Execute();
             }
         }
-    }
-
-    private bool ShouldStop(IQueue queue)
-    {
-        return queue.IsEmpty();
     }
 }
