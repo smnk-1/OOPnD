@@ -1,5 +1,4 @@
 ﻿using Hwdtech;
-using Hwdtech.Ioc;
 namespace StarWars.Lib;
 
 public class Game : Hwdtech.ICommand
@@ -15,8 +14,7 @@ public class Game : Hwdtech.ICommand
     public void Execute()
     {
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
-
-        var queue = IoC.Resolve<ICommandReceiver>("Game.Queue");
+        _ = IoC.Resolve<ICommandReceiver>("Game.Queue");
 
         while (!stop)
         {
