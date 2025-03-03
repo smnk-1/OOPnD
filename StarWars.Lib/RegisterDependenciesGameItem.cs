@@ -20,7 +20,7 @@ public class RegisterDependenciesGameItem : Hwdtech.ICommand
             (object[] args) => IoC.Resolve<Hwdtech.ICommand>(
                 "Commands.Add",
                 gameItems,
-                (string)args[0], 
+                (string)args[0],
                 (IDictionary<string, object>)args[1])
         ).Execute();
 

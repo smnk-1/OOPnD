@@ -26,10 +26,10 @@ public class GameItemRepositoryTests
         var GameObject = new Dictionary<string, object>(){
             {"key", "value"}
         };
-        var add_cmd = IoC.Resolve<Hwdtech.ICommand>("GameItem.Add" , [Id, GameObject]);
+        var add_cmd = IoC.Resolve<Hwdtech.ICommand>("GameItem.Add", [Id, GameObject]);
 
         Assert.NotNull(add_cmd);
-        Assert.IsType<AddCommand>(add_cmd);     
+        Assert.IsType<AddCommand>(add_cmd);
 
         add_cmd.Execute();
 
@@ -40,7 +40,7 @@ public class GameItemRepositoryTests
         var remove_cmd = IoC.Resolve<Hwdtech.ICommand>("GameItem.Remove", Id);
 
         Assert.NotNull(remove_cmd);
-        Assert.IsType<RemoveCommand>(remove_cmd); 
+        Assert.IsType<RemoveCommand>(remove_cmd);
 
         remove_cmd.Execute();
 
