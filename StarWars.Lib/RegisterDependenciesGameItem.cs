@@ -17,22 +17,20 @@ public class RegisterDependenciesGameItem : Hwdtech.ICommand
         IoC.Resolve<Hwdtech.ICommand>(
             "IoC.Register",
             "GameItem.Add",
-            (Func<object[], object>)(args =>
-            {
-                gameItems.Add((string)args[0], (IDictionary<string, object>)args[1]);
-                return null;
-            })
+            (object[] args) => IoC.Resolve<Hwdtech.ICommand>(
+                "Commands.Add",
+                gameItems,
+                (string)args[0], 
+                (IDictionary<string, object>)args[1])
         ).Execute();
 
         IoC.Resolve<Hwdtech.ICommand>(
             "IoC.Register",
             "GameItem.Remove",
-            (Func<object[], object>)(args =>
-            {
-                gameItems.Remove((string)args[0]);
-                return null;
-            })
+            (object[] args) => IoC.Resolve<Hwdtech.ICommand>(
+                "Commands.Remove",
+                gameItems,
+                (string)args[0])
         ).Execute();
-
     }
 }

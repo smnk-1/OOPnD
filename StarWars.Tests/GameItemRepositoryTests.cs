@@ -13,25 +13,37 @@ public class GameItemRepositoryTests
         IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set",
             IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"))).Execute();
 
-        new RegisterDependenciesGameItem().Execute();
     }
 
     [Fact]
     public void GameRepositoryTests()
     {
+        new RegisterIoCDependencyAddCommand().Execute();
+        new RegisterIoCDependencyRemoveCommand().Execute();
+        new RegisterDependenciesGameItem().Execute();
+
+        var Id = "spaceship01";
         var GameObject = new Dictionary<string, object>(){
             {"key", "value"}
         };
-        var gameRepo = new GameRepository();
+        var add_cmd = IoC.Resolve<Hwdtech.ICommand>("GameItem.Add" , [Id, GameObject]);
 
-        gameRepo.AddItem("spaceship01", GameObject);
+        Assert.NotNull(add_cmd);
+        Assert.IsType<AddCommand>(add_cmd);     
 
-        var result = gameRepo.GetItem("spaceship01");
+        add_cmd.Execute();
 
-        Assert.Equal(GameObject, result);
+        var recieved_item = IoC.Resolve<object>("GameItem", Id);
 
-        gameRepo.RemoveItem("spaceship01");
+        Assert.Equal((Dictionary<string, object>)recieved_item, GameObject);
 
-        Assert.Throws<KeyNotFoundException>(() => gameRepo.GetItem("spaceship01"));
+        var remove_cmd = IoC.Resolve<Hwdtech.ICommand>("GameItem.Remove", Id);
+
+        Assert.NotNull(remove_cmd);
+        Assert.IsType<RemoveCommand>(remove_cmd); 
+
+        remove_cmd.Execute();
+
+        Assert.Throws<KeyNotFoundException>(() => IoC.Resolve<object>("GameItem", Id));
     }
 }
