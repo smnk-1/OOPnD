@@ -9,6 +9,7 @@ class GeometryShape:
             raise ValueError("В подклассе должен быть определён непустой default_shape")
         self.center = center
         self.shape = self._translate_shape(self.default_shape, self.center)
+        self.current_angle = 0
 
     def _translate_shape(self, shape, center):
         """
@@ -34,29 +35,28 @@ class GeometryShape:
 
     def rotate(self, vector):
         """
-        Поворачивает фигуру вокруг её центра.
-        Вычисляет угол поворота theta относительно базового вектора (0, 1)
-        по нормализованному входному вектору.
-        Для каждой точки (x, y) выполняется:
-            x' = cx + (x - cx) * cos(theta) - (y - cy) * sin(theta)
-            y' = cy + (x - cx) * sin(theta) + (y - cy) * cos(theta)
-        где (cx, cy) — координаты центра фигуры.
+        Поворачивает фигуру так, чтобы её ориентация стала сонаправлена с заданным вектором.
+        Исходно объект ориентирован по вектору (0,1) (т.е. current_angle = 0).
+        Вычисляем требуемый угол (desired_angle) и разницу с текущим (rotation_angle),
+        затем поворачиваем фигуру на эту разницу и обновляем current_angle.
         """
         vx, vy = vector
         norm = math.sqrt(vx**2 + vy**2)
         if norm == 0:
             raise ValueError("Вектор для поворота не должен быть нулевым")
+        
+        desired_angle = math.atan2(vy, vx) - math.pi/2
+        rotation_angle = desired_angle - self.current_angle
 
-        ux, uy = vx / norm, vy / norm
-        theta = math.atan2(vy, vx) - math.pi/2
+        self.current_angle = desired_angle
+        
         cx, cy = self.center
-
         rotated_points = []
         for x, y in self.shape:
             x_rel = x - cx
             y_rel = y - cy
-            x_rot = x_rel * math.cos(theta) - y_rel * math.sin(theta)
-            y_rot = x_rel * math.sin(theta) + y_rel * math.cos(theta)
+            x_rot = x_rel * math.cos(rotation_angle) - y_rel * math.sin(rotation_angle)
+            y_rot = x_rel * math.sin(rotation_angle) + y_rel * math.cos(rotation_angle)
             rotated_points.append((x_rot + cx, y_rot + cy))
         self.shape = rotated_points
 
@@ -93,7 +93,6 @@ def plot_starships(starship1, starship2, vector):
 
     ax.arrow(center2[0], center2[1], vector[0], vector[1],
              head_width=0.3, head_length=0.3, fc='green', ec='green', linewidth=2)
-
 
     ax.grid(True)
     ax.axis('equal')
