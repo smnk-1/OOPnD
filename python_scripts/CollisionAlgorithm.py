@@ -1,40 +1,35 @@
-from GeometryShapes import GeometryShape, plot_starships
+import csv
 from GeometryCollisions import detect_collision
 
-class SmallStarship(GeometryShape):
-    default_shape = [
-        (0, 2),
-        (1, 0),
-        (1, -1),
-        (-1, -1),
-        (-1, 0)
-    ]
+class CollisionAlgorithm:    
+    def run_(self, stationary_shape, moving_shape):
+        coordinates = [x for x in range(-2*self.max_vel, 2*self.max_vel + 1)]
+        vectors = [x for x in range(-1* self.max_vel, self.max_vel + 1)]
+        coordinates.remove(0)
+        vectors.remove(0)
+        count = 0
+        collisions_data = []
+        for dx in coordinates:
+            for dy in coordinates:
+                for dvx in vectors:
+                    for dvy in vectors:
+                        count += 1
+                        moving_shape.set_center((dx, dy))
+                        moving_shape.rotate((dvx, dvy))
 
-class BigStarship(GeometryShape):
-  default_shape = [
-      (1, -2),
-      (2, -1),
-      (1, 3),
-      (-1, 3),
-      (-2, -1),
-      (-1, -2)
-  ]
-
-s1 = SmallStarship(center=(0,0))
-vector = (-6, -5)
-s2 = BigStarship(center=(7,8))
-s2.rotate(vector)
-
-collisions = detect_collision(
-    stationary_poly=s1.get_points(),
-    moving_poly=s2.get_points(),
-    v=vector)
-
-if collisions:
-    print("Обнаружено столкновение (точки пересечения):")
-    for pt in collisions:
-        print(pt)
-else:
-    print("Столкновений не обнаружено.")
-
-plot_starships(s1, s2, vector)
+                        collisions = detect_collision(
+                            stationary_poly=stationary_shape.get_points(),
+                            moving_poly=moving_shape.get_points(),
+                            v=(dvx, dvy),
+                            fast=True)
+                        if collisions:
+                            collisions_data.append([dx, dy, dvx, dvy])
+        return collisions_data
+    
+    def Execute(self, stationary_shape, moving_shape, stationary_name, moving_name, max_vel):
+        self.max_vel = max_vel
+        data = self.run_(stationary_shape, moving_shape)
+        with open(f'collision_data/collisions_stat:{stationary_name}_move:{moving_name}_maxvel:{max_vel}.csv', mode='w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            for subarray in data:
+                writer.writerow(subarray)
