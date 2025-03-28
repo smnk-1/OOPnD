@@ -24,7 +24,7 @@ def segment_line_intersection(P0, v, A, B, eps=1e-10):
     return None
 
 
-def detect_collision(moving_poly, stationary_poly, v):
+def detect_collision(stationary_poly, moving_poly, v, fast = False):
     """
     Для каждой вершины подвижной фигуры (moving_poly)
     проверяет, пересекается ли её траектория (сдвиг на вектор v)
@@ -43,4 +43,6 @@ def detect_collision(moving_poly, stationary_poly, v):
                 t, u = res
                 collision_point = (P[0] + t * v[0], P[1] + t * v[1])
                 collisions.append(collision_point)
+                if fast:
+                    return collisions
     return collisions
