@@ -400,4 +400,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 venv/
-
+.DS_store
