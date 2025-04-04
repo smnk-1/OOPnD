@@ -29,7 +29,7 @@ class CollisionAlgorithm:
     def Execute(self, stationary_shape, moving_shape, stationary_name, moving_name, max_vel):
         self.max_vel = max_vel
         data = self.run_(stationary_shape, moving_shape)
-        with open(f'collision_data/collisions_stat:{stationary_name}_move:{moving_name}_maxvel:{max_vel}.csv', mode='w', newline='') as csv_file:
+        with open(f'collision_data/collisions_stat_{stationary_name}_move_{moving_name}_maxvel_{max_vel}.csv', mode='w', newline='') as csv_file:
             writer = csv.writer(csv_file)
             for subarray in data:
                 writer.writerow(subarray)
