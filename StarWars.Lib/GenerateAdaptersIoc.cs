@@ -1,9 +1,9 @@
-using Hwdtech;
+﻿using Hwdtech;
 namespace StarWars.Lib;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 
 public class RegisterIoCDependencyAdaptersGenerate : Hwdtech.ICommand
 {
@@ -32,9 +32,7 @@ public class RegisterIoCDependencyAdaptersGenerate : Hwdtech.ICommand
             var sourceCode = IoC.Resolve<string>("Adapters.GenerateAdapterCode", adaptee.GetType(), targetType, template);
             var assembly = IoC.Resolve<Assembly>("Adapters.Compile", adaptee.GetType().Assembly, sourceCode);
 
-            var adapterType = assembly.GetTypes()
-                .First(t => targetType.IsAssignableFrom(t));
-                
+            var adapterType = assembly.GetTypes().First(t => targetType.IsAssignableFrom(t));
             var adapter = (IAdapter)Activator.CreateInstance(adapterType)!;
 
             adapters[adapterKey] = adapter;

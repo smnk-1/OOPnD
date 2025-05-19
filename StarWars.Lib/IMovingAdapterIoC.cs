@@ -1,4 +1,4 @@
-using Hwdtech;
+﻿using Hwdtech;
 namespace StarWars.Lib;
 
 public class RegisterIoCDependencyIMovingAdapter : Hwdtech.ICommand
