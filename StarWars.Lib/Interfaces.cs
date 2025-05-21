@@ -2,7 +2,7 @@
 
 public interface ICommand
 {
-    public void Execute();
+    void Execute();
 }
 
 public interface ICommandReceiver
