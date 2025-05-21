@@ -9,7 +9,7 @@ public class RegisterIoCDependencyAdaptersGenerate : Hwdtech.ICommand
 {
     public void Execute()
     {
-        IoC.Resolve<object>("IoC.Register", "Adapters.Generate",
+        IoC.Resolve<Hwdtech.ICommand>("IoC.Register", "Adapters.Generate",
         (Func<object[], object>)(args =>
         {
             var adaptee = args[0];
@@ -30,15 +30,13 @@ public class RegisterIoCDependencyAdaptersGenerate : Hwdtech.ICommand
 
             var template = IoC.Resolve<string>("Adapters.GetTemplate", targetType);
             var sourceCode = IoC.Resolve<string>("Adapters.GenerateAdapterCode", adaptee.GetType(), targetType, template);
-            var assembly = IoC.Resolve<Assembly>("Adapters.Compile", adaptee.GetType().Assembly, sourceCode);
-
-            var adapterType = assembly.GetTypes().First(t => targetType.IsAssignableFrom(t));
-            var adapter = (IAdapter)Activator.CreateInstance(adapterType)!;
+            var assembly = IoC.Resolve<Assembly>("Adapters.Compile", adaptee.GetType().Assembly);
+            var adapter = (IAdapter)Activator.CreateInstance(assembly.GetTypes().First(t => typeof(IAdapter).IsAssignableFrom(t)))!;
 
             adapters[adapterKey] = adapter;
 
             return adapter.Adapt(adaptee);
 
-        }));
+        })).Execute();
     }
 }
