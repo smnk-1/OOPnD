@@ -1,12 +1,12 @@
-using Hwdtech;
+﻿using Hwdtech;
 
 namespace StarWars.Lib;
 
-public class RegisterShootDependency : ICommand
+public class RegisterShootDependency : Hwdtech.ICommand
 {
     public void Execute()
     {
-        IoC.Resolve<ICommand>(
+        IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Command.Shoot",
                 (object[] args) =>

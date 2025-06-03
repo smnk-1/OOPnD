@@ -1,21 +1,22 @@
 using Hwdtech;
 
-namespace StarWars.Lib;
-
-public class ShootCommand : ICommand
+namespace StarWars.Lib
 {
-    private readonly IWeapon _weaponParams;
-
-    public ShootCommand(IWeapon obj)
+    public class ShootCommand : Hwdtech.ICommand
     {
-        _weaponParams = obj;
-    }
+        private readonly IWeapon _weaponParams;
 
-    public void Execute()
-    {
-        var weaponObject = IoC.Resolve<IWeapon>("Weapon.Create");
+        public ShootCommand(IWeapon obj)
+        {
+            _weaponParams = obj;
+        }
 
-        IoC.Resolve<ICommand>("Weapon.Setup", weaponObject, _weaponParams).Execute();
-        IoC.Resolve<ICommand>("Actions.Start", weaponObject).Execute();
+        public void Execute()
+        {
+            var weaponObject = IoC.Resolve<IWeapon>("Weapon.Create");
+
+            IoC.Resolve<Hwdtech.ICommand>("Weapon.Setup", weaponObject, _weaponParams).Execute();
+            IoC.Resolve<Hwdtech.ICommand>("Actions.Start", weaponObject).Execute();
+        }
     }
 }
