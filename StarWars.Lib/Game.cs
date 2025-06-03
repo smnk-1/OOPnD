@@ -34,6 +34,7 @@ public class Game : Hwdtech.ICommand
             {
                 IoC.Resolve<Hwdtech.ICommand>("ExceptionHandler", cmd, e).Execute();
             }
+
             _stopwatch.Stop();
         }
     }
