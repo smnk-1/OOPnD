@@ -1,24 +1,31 @@
-﻿using Hwdtech;
+﻿using System.Diagnostics;
+using Hwdtech;
 namespace StarWars.Lib;
 
 public class Game : Hwdtech.ICommand
 {
     private readonly object _scope;
     public bool stop;
+    private readonly Stopwatch _stopwatch;
 
     public Game(object scope)
     {
         _scope = scope;
+        _stopwatch = new Stopwatch();
     }
 
     public void Execute()
     {
-        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
-        _ = IoC.Resolve<ICommandReceiver>("Game.Queue");
+        _stopwatch.Reset();
 
-        while (!stop)
+        IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
+
+        var cmdsTime = IoC.Resolve<TimeSpan>("Command.Time");
+
+        while (IoC.Resolve<Func<int>>("Game.Queue.Count")() > 0 && _stopwatch.Elapsed <= cmdsTime)
         {
-            var cmd = IoC.Resolve<Hwdtech.ICommand>("Game.Scheduler.NextCommand");
+            _stopwatch.Start();
+            var cmd = IoC.Resolve<Hwdtech.ICommand>("Game.Queue.NextCommand");
             try
             {
                 cmd.Execute();
@@ -27,6 +34,7 @@ public class Game : Hwdtech.ICommand
             {
                 IoC.Resolve<Hwdtech.ICommand>("ExceptionHandler", cmd, e).Execute();
             }
+            _stopwatch.Stop();
         }
     }
 }
