@@ -8,11 +8,14 @@ namespace StarWars.Tests
     public class GameTests
     {
         private readonly object _scope;
-        private readonly Mock<Hwdtech.ICommand> _cmd1;
-        private readonly Mock<Hwdtech.ICommand> _cmd2;
-        private readonly Mock<Hwdtech.ICommand> _exCmd;
-        private readonly Mock<Hwdtech.ICommand> _exHandler;
-        private readonly Queue<Hwdtech.ICommand> _q;
+
+        private readonly Mock<Hwdtech.ICommand> command1;
+        private readonly Mock<Hwdtech.ICommand> command2;
+
+        private readonly Mock<Hwdtech.ICommand> errorCommand;
+        private readonly Mock<Hwdtech.ICommand> errorHandler;
+
+        private readonly Queue<Hwdtech.ICommand> queue;
 
         public GameTests()
         {
@@ -20,38 +23,40 @@ namespace StarWars.Tests
             _scope = IoC.Resolve<object>("Scopes.New", IoC.Resolve<object>("Scopes.Root"));
             IoC.Resolve<Hwdtech.ICommand>("Scopes.Current.Set", _scope).Execute();
 
-            _cmd1 = new Mock<Hwdtech.ICommand>();
-            _cmd2 = new Mock<Hwdtech.ICommand>();
-            _exCmd = new Mock<Hwdtech.ICommand>();
-            _exCmd.Setup(x => x.Execute()).Throws<Exception>();
-            _exHandler = new Mock<Hwdtech.ICommand>();
+            command1 = new Mock<Hwdtech.ICommand>();
+            command2 = new Mock<Hwdtech.ICommand>();
 
-            _q = new Queue<Hwdtech.ICommand>();
+            errorCommand = new Mock<Hwdtech.ICommand>();
+            errorCommand.Setup(x => x.Execute()).Throws<Exception>();
+
+            errorHandler = new Mock<Hwdtech.ICommand>();
+
+            queue = new Queue<Hwdtech.ICommand>();
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Game.Queue.Count",
-                (Func<object[], object>)(_ => (Func<int>)(() => _q.Count))
+                (Func<object[], object>)(_ => (Func<int>)(() => queue.Count))
             ).Execute();
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "Game.Queue.NextCommand",
-                (Func<object[], object>)(_ => _q.Dequeue())
+                (Func<object[], object>)(_ => queue.Dequeue())
             ).Execute();
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
                 "ExceptionHandler",
-                (Func<object[], object>)(args => _exHandler.Object)
+                (Func<object[], object>)(args => errorHandler.Object)
             ).Execute();
         }
 
         [Fact]
-        public void AllCommandsInGameQueueAreExecuted()
+        public void AllCommandsInQueueExecuted()
         {
-            _q.Enqueue(_cmd1.Object);
-            _q.Enqueue(_cmd2.Object);
+            queue.Enqueue(command1.Object);
+            queue.Enqueue(command2.Object);
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
@@ -61,14 +66,14 @@ namespace StarWars.Tests
 
             new Game(_scope).Execute();
 
-            _cmd1.Verify(x => x.Execute(), Times.Once());
-            _cmd2.Verify(x => x.Execute(), Times.Once());
+            command1.Verify(x => x.Execute(), Times.Once());
+            command2.Verify(x => x.Execute(), Times.Once());
         }
 
         [Fact]
-        public void NoCommandsAreExecutedWhenTimeIsUp()
+        public void NoCommandsExecutedOnOvertime()
         {
-            _q.Enqueue(_cmd1.Object);
+            queue.Enqueue(command1.Object);
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
@@ -78,13 +83,13 @@ namespace StarWars.Tests
 
             new Game(_scope).Execute();
 
-            _cmd1.Verify(x => x.Execute(), Times.Never());
+            command1.Verify(x => x.Execute(), Times.Never());
         }
 
         [Fact]
-        public void ExceptionHandlerIsExecutedWhenCommandThrows()
+        public void ExceptionHandlerExecutionOnCommandThrows()
         {
-            _q.Enqueue(_exCmd.Object);
+            queue.Enqueue(errorCommand.Object);
 
             IoC.Resolve<Hwdtech.ICommand>(
                 "IoC.Register",
@@ -94,7 +99,7 @@ namespace StarWars.Tests
 
             new Game(_scope).Execute();
 
-            _exHandler.Verify(x => x.Execute(), Times.Once());
+            errorHandler.Verify(x => x.Execute(), Times.Once());
         }
     }
 }
