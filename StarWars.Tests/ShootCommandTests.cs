@@ -23,7 +23,7 @@ namespace StarWars.Tests
         {
             var spawnPosition = new CustomVector(new[] { 0, 0 });
             var direction = new CustomVector(new[] { 2, 1 });
-            var projectileSpeed = 2.0;
+            var projectileSpeed = 2;
 
             var weaponMock = new Mock<IWeapon>();
             weaponMock.Setup(w => w.SpawnPosition).Returns(spawnPosition);
