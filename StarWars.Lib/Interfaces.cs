@@ -9,3 +9,10 @@ public interface ICommandReceiver
 {
     void Receive(Hwdtech.ICommand cmd);
 }
+
+public interface IWeapon
+{
+    CustomVector SpawnPosition { get; }
+    CustomVector Direction { get; }
+    int ProjectileSpeed { get; }
+}
