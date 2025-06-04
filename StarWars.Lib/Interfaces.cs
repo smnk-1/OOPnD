@@ -14,5 +14,5 @@ public interface IWeapon
 {
     CustomVector SpawnPosition { get; }
     CustomVector Direction { get; }
-    double ProjectileSpeed { get; }
+    int ProjectileSpeed { get; }
 }
